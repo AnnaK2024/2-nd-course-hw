@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Montserrat", sans-serif;
+}
+.center {
+    padding-left: calc(50% - 640px);
+    padding-right: calc(50% - 640px);
+}
+.top{
+    height: 1024px;
+    background-image: url(img/imgTop.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 120px;
+    padding-top: 217px
+}
+.header__img{
+    width: 100%;
+}
+.header__title{
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #FFF;
+    padding-bottom: 32px;
+    width: 788.778px;
+}
+.header__text{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 32px; /* 177.778% */
+    color: #FFF;
+    padding-bottom: 44px;
+    width: 481px;
+}
+.header__link{
+    flex-shrink: 0;
+    height: 48.603px;
+    border-radius: 30px;
+    background: #9C0332;
+    color: #FFF;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 234.063px;
+}
+
+.product{
+    background: #000915;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 556px;
+}
+.product__box{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-top: 128px;
+}
+.product__link{
+    height: 300px;
+    width: 378px;
+    border-radius: 16px;
+    font-family: "Montserrat"
+}
+.product__link_1{
+    background: url(img/game3.jpg);
+    color: #FFF;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-left: 32px;
+    padding-bottom: 32px;
+    font-size: 24px;
+}
+.product__link_2{
+    background: url(img/game2.jpg);
+    color: #FFF;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-left: 32px;
+    padding-bottom: 32px;
+    font-size: 24px;
+}
+.product__link_3{
+    background: url(img/game1.jpg);
+    color: #FFF;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-left: 32px;
+    padding-bottom: 32px;
+    font-size: 24px;
+}   
