@@ -1,31 +1,27 @@
 //*Задание 1
 let a = 10;
-alert(10);
+alert(a);
 a = 20;
-alert(20);
+alert(a);
 
 //*Задание 2
-let birthPhone = ("год выпуска первого iPhone");
-alert("год выпуска первого iPhone 2007");
+const birthPhone = ("год выпуска первого iPhone 2007");
+alert(birthPhone);
 
 //*Задание 3
-let creatorJavaScript = ("создателем языка JavaScript был Brandan Eich");
-alert("создателем языка JavaScript был Brandan Eich");
+const creatorJavaScript = ("создателем языка JavaScript был Brandan Eich");
+alert(creatorJavaScript);
 
 //*Задание 4
 let x = 10, y = 2;
-let resultPlus = x + y;
-alert(resultPlus);
-let resultMinus = x - y;
-alert(resultMinus);
-let resultMultiplication = x * y;
-alert(resultMultiplication);
-let resultDivision = x / y;
-alert(resultDivision);
+alert(x + y);
+alert(x - y);
+alert(x * y);
+alert(x / y);
+
 
 //*Задание 5
-let c = 2, d = 5;
-let resultDegree = c ** d;
+let result = 2**5;
 alert(resultDegree);
 
 //*Задание 6
@@ -44,58 +40,29 @@ num --;
 alert(num);
 
 //*Задание 8
-let age = Number(prompt ("Сколько вам лет?"));
-alert(42);
+let age = prompt("Сколько вам лет?");
+alert(age);
 
 //*Задание 9
 let user = {
     name: 'Anna',
     age: 42,
-    isAdmin:true,
+    isAdmin: true
 };
 
 //*Задание 9.1
-let user = {
-    name: 'Anna',
-    age: 42,
-    isAdmin:true,
-};
 user['city of residence'] = 'Москва';
 
 //*Задание 9.2
-let user = {
-    name: 'Anna',
-    age: 42,
-    isAdmin:true,
-};
-user['city of residence'] = 'Москва';
 user.age = 43;
 
 //*Задание 9.3
-let user = {
-    name: 'Anna',
-    age: 42,
-    isAdmin:true,
-};
-user['city of residence'] = 'Москва';
-user.age = 43;
 delete user['city of residence'] = 'Москва';
 
 //*Задание 9.4
-let user = {
-    name: 'Anna',
-    age: 42,
-    isAdmin:true,
-};
-user['city of residence'] = 'Москва';
-user.age = 43;
-delete user['city of residence'] = 'Москва';
-
 let info = prompt("Какую информацию хотите узнать о пользователе?");
-alert(console.log(user[name]));
-alert(console.log(user[age]));
-alert(console.log(user[isAdmin]));
+alert(user[info]);
 
 //*Задание 10
-let nameNew = prompt("Привет, ИМЯ!");
-alert(nameNew);
+let nameNew = prompt("Как Вас зовут?");
+alert(`Привет, ${nameNew}!`);
