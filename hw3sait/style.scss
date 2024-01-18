@@ -22,6 +22,7 @@ body {
 .header{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex-wrap: wrap;
     padding-top: 217px;
     &__title{
@@ -31,7 +32,7 @@ body {
         line-height: normal;
         color: $color-text;
         padding-bottom: 32px;
-        width: 788.778px;
+        max-width: 788.778px;
     }
     &__text{
         font-size: 18px;
@@ -40,7 +41,7 @@ body {
         line-height: 32px; /* 177.778% */
         color: $color-text;
         padding-bottom: 44px;
-        width: 481px;
+        max-width: 481px;
     }
     &__link{
         flex-shrink: 0;
@@ -52,7 +53,7 @@ body {
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        width: 234.063px;
+        max-width: 234.063px;
     }
 }
 
@@ -90,6 +91,7 @@ body {
         background-image: url(img/game3.jpg);
     }
 }   
+@import 'mobile';
 
 
 

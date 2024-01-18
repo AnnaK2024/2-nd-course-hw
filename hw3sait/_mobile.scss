@@ -1,0 +1,19 @@
+@media (max-width: 375px) {
+    .center {
+        padding-left: calc(50% - 343px);
+        padding-right: calc(50% - 343px);
+    }
+    .top{
+        height: 735px;
+    }
+    .header{
+        padding-top: 239px;
+        &__title{
+            font-size: 32px;
+        }
+        &__text{
+            font-size: 14px;
+            line-height: 22px;
+        }
+    }
+}
