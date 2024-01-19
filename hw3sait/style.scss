@@ -1,6 +1,4 @@
 
-@import 'vars';
-
 *{
     margin: 0;
     padding: 0;
@@ -30,30 +28,30 @@ body {
         font-style: normal;
         font-weight: 700;
         line-height: normal;
-        color: $color-text;
+        color: #FFF;
         padding-bottom: 32px;
-        max-width: 788.778px;
+        width: 788.778px;
     }
     &__text{
         font-size: 18px;
         font-style: normal;
         font-weight: 300;
-        line-height: 32px; /* 177.778% */
-        color: $color-text;
+        line-height: 32px; 
+        color: #FFF;
         padding-bottom: 44px;
-        max-width: 481px;
+        width: 481px;
     }
     &__link{
         flex-shrink: 0;
         height: 48.603px;
         border-radius: 30px;
         background: #9C0332;
-        color: $color-text;
+        color: #FFF;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        max-width: 234.063px;
+        width: 234.063px;
     }
 }
 
@@ -90,9 +88,9 @@ body {
     &__link_3{
         background-image: url(img/game3.jpg);
     }
-}   
-@import 'mobile';
+}  
 
+@import 'mobile'
 
 
 

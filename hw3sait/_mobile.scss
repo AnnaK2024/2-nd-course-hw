@@ -1,13 +1,10 @@
-@media (max-width: 375px) {
-    .center {
-        padding-left: calc(50% - 343px);
-        padding-right: calc(50% - 343px);
-    }
-    .top{
-        height: 735px;
+@media (max-width: 767px) {
+    .center{
+        padding-left: 16px;
+        padding-right: 16px;
     }
     .header{
-        padding-top: 239px;
+        padding-top: 238px;
         &__title{
             font-size: 32px;
         }
@@ -17,3 +14,5 @@
         }
     }
 }
+
+

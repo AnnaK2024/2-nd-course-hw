@@ -32,30 +32,30 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  color: #fff;
+  color: #FFF;
   padding-bottom: 32px;
-  max-width: 788.778px;
+  width: 788.778px;
 }
 .header__text {
   font-size: 18px;
   font-style: normal;
   font-weight: 300;
-  line-height: 32px; /* 177.778% */
-  color: #fff;
+  line-height: 32px;
+  color: #FFF;
   padding-bottom: 44px;
-  max-width: 481px;
+  width: 481px;
 }
 .header__link {
   flex-shrink: 0;
   height: 48.603px;
   border-radius: 30px;
   background: #9C0332;
-  color: #fff;
+  color: #FFF;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  max-width: 234.063px;
+  width: 234.063px;
 }
 
 .product {
@@ -93,16 +93,13 @@ body {
   background-image: url(img/game3.jpg);
 }
 
-@media (max-width: 375px) {
+@media (max-width: 767px) {
   .center {
-    padding-left: calc(50% - 343px);
-    padding-right: calc(50% - 343px);
-  }
-  .top {
-    height: 735px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
   .header {
-    padding-top: 239px;
+    padding-top: 238px;
   }
   .header__title {
     font-size: 32px;
