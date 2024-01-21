@@ -3,15 +3,25 @@
         padding-left: 16px;
         padding-right: 16px;
     }
+    .top{
+        height: 735px;
+    }
     .header{
         padding-top: 238px;
+        padding-bottom: 238px;
         &__title{
             font-size: 32px;
+            text-align: center;
         }
         &__text{
             font-size: 14px;
             line-height: 22px;
+            text-align: center;
         }
+        &__go{
+            margin-left: 54.47px;
+        }
+
     }
 }
 

@@ -18,10 +18,6 @@ body {
     background-size: cover;
 }   
 .header{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
     padding-top: 217px;
     &__title{
         font-size: 64px;
@@ -30,7 +26,7 @@ body {
         line-height: normal;
         color: #FFF;
         padding-bottom: 32px;
-        width: 788.778px;
+        max-width: 788.778px;
     }
     &__text{
         font-size: 18px;
@@ -39,10 +35,13 @@ body {
         line-height: 32px; 
         color: #FFF;
         padding-bottom: 44px;
-        width: 481px;
+        max-width: 481px;
     }
-    &__link{
-        flex-shrink: 0;
+    &__go{
+        display: flex;
+        align-items: center;
+        width: 234.063px;
+        justify-content: center;
         height: 48.603px;
         border-radius: 30px;
         background: #9C0332;
@@ -51,25 +50,27 @@ body {
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        width: 234.063px;
+        border: #9C0332;
+        text-decoration: none;
+        &:hover{
+            transform: scale(1.2);
+            transition: all 0.5s;
+        }    
     }
 }
 
-.product{
+.games{
     background: #000915;
-    background-repeat: no-repeat;
-    background-position: center;
     &__box{
         display: flex;
         flex-wrap: wrap;
-        flex-direction: row;
         justify-content: space-between;
         gap: 32px;
         padding-top: 128px;
         padding-bottom: 128px;
     }
     &__link{
-        width: 378px;
+        min-width: 378px;
         height: 300px;
         border-radius: 16px;
         color: #FFF;
@@ -78,15 +79,34 @@ body {
         padding-left: 32px;
         padding-bottom: 32px;
         font-size: 24px;
+        &:hover{
+            transform: scale(1.05);
+            transition: all 0.3s;
+            box-shadow: 0 0 5px #30b0e7;
+            padding: 20px;
+            box-sizing: border-box;
+        }
     }
     &__link_1{
         background-image: url(img/game1.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        text-decoration: none;
     }
     &__link_2{
         background-image: url(img/game2.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        text-decoration: none;
     }    
     &__link_3{
         background-image: url(img/game3.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        text-decoration: none;
     }
 }  
 
