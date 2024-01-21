@@ -13,7 +13,7 @@ body {
 }
 
 .top {
-  height: 1024px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) -7.35%, #000915 100%), lightgray 50%/cover no-repeat;
   background-image: url(img/imgTop.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -26,6 +26,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   padding-top: 217px;
+  padding-bottom: 495px;
 }
 .header__title {
   font-size: 64px;
@@ -56,6 +57,7 @@ body {
   font-weight: 400;
   line-height: normal;
   width: 234.063px;
+  height: 48.603px;
 }
 
 .product {
@@ -99,13 +101,20 @@ body {
     padding-right: 16px;
   }
   .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
     padding-top: 238px;
+    padding-bottom: 238px;
   }
   .header__title {
     font-size: 32px;
+    text-align: center;
   }
   .header__text {
     font-size: 14px;
     line-height: 22px;
+    text-align: center;
   }
 }/*# sourceMappingURL=style.css.map */
