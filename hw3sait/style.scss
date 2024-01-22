@@ -2,6 +2,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 body {
     font-family: "Montserrat", sans-serif;
@@ -52,9 +53,9 @@ body {
         line-height: normal;
         border: #9C0332;
         text-decoration: none;
+        transition: all 0.5s;
         &:hover{
             transform: scale(1.2);
-            transition: all 0.5s;
         }    
     }
 }
@@ -77,12 +78,11 @@ body {
         border-radius: 16px;
         width: 378px;
         height: 300px;
+        transition: all 0.3s;
         &:hover{
             transform: scale(1.05);
-            transition: all 0.3s;
             box-shadow: 0 0 16px #30b0e7;
             padding: 20px;
-            box-sizing: border-box;
         }
     }
     &__box_2{
@@ -93,14 +93,12 @@ body {
         border-radius: 16px;
         width: 378px;
         height: 300px;
+        transition: all 0.3s;
         &:hover{
             transform: scale(1.05);
-            transition: all 0.3s;
             box-shadow: 0 0 16px #30b0e7;
             padding: 20px;
-            box-sizing: border-box;
         }
-
     }    
     &__box_3{
         background-image: url(img/game3.jpg);
@@ -110,12 +108,11 @@ body {
         border-radius: 16px;
         width: 378px;
         height: 300px;
+        transition: all 0.3s;
         &:hover{
             transform: scale(1.05);
-            transition: all 0.3s;
             box-shadow: 0 0 16px #30b0e7;
             padding: 20px;
-            box-sizing: border-box;
         }
     }
     &__link{
@@ -125,6 +122,8 @@ body {
         text-decoration: none;
         display: flex;
         flex-direction: column-reverse;
+        padding-left: 32px;
+        padding-bottom: 32px;
     }    
 }
 

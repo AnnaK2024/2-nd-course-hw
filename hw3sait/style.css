@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -56,16 +57,16 @@ body {
   line-height: normal;
   border: #9C0332;
   text-decoration: none;
+  transition: all 0.5s;
 }
 .header__go:hover {
   transform: scale(1.2);
-  transition: all 0.5s;
 }
 
 .games {
   background: #000915;
 }
-.games__box {
+.games__boxes {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -73,44 +74,60 @@ body {
   padding-top: 128px;
   padding-bottom: 128px;
 }
-.games__link {
-  min-width: 378px;
-  height: 300px;
-  border-radius: 16px;
-  color: #FFF;
-  display: flex;
-  flex-direction: column-reverse;
-  padding-left: 32px;
-  padding-bottom: 32px;
-  font-size: 24px;
-}
-.games__link:hover {
-  transform: scale(1.05);
-  transition: all 0.3s;
-  box-shadow: 0 0 5px #30b0e7;
-  padding: 20px;
-  box-sizing: border-box;
-}
-.games__link_1 {
+.games__box_1 {
   background-image: url(img/game1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  text-decoration: none;
+  border-radius: 16px;
+  width: 378px;
+  height: 300px;
+  transition: all 0.3s;
 }
-.games__link_2 {
+.games__box_1:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #30b0e7;
+  padding: 20px;
+}
+.games__box_2 {
   background-image: url(img/game2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  text-decoration: none;
+  border-radius: 16px;
+  width: 378px;
+  height: 300px;
+  transition: all 0.3s;
 }
-.games__link_3 {
+.games__box_2:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #30b0e7;
+  padding: 20px;
+}
+.games__box_3 {
   background-image: url(img/game3.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  border-radius: 16px;
+  width: 378px;
+  height: 300px;
+  transition: all 0.3s;
+}
+.games__box_3:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px #30b0e7;
+  padding: 20px;
+}
+.games__link {
+  color: #FFF;
+  line-height: 32px;
+  font-size: 24px;
   text-decoration: none;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-left: 32px;
+  padding-bottom: 32px;
 }
 
 @media (max-width: 767px) {
