@@ -128,4 +128,67 @@ body {
     }    
 }
 
+.seasons{
+    height: 800px;
+    background: #000915;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    &__heading{
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+        padding-top: 282px;
+    }
+    &__title{
+        color: #FFF;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        font-size: 48px;
+    }
+    &__text{
+        max-width: 584px;
+        color: #FFF;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 32px;
+    }
+    &__go{
+        display: flex;
+        align-items: center;
+        width: 234.063px;
+        justify-content: center;
+        height: 48.603px;
+        border-radius: 30px;
+        background: #9C0332;
+        color: #FFF;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        border: #9C0332;
+        text-decoration: none;
+        &:hover{
+            transform: scale(1.2);
+            transition: all 0.5s;
+        }
+    }
+}
+.seasons__img{
+    width: 485px;
+    height: 333px;
+    padding-top: 233px;
+}
+
 @import 'mobile'
+
+
+
