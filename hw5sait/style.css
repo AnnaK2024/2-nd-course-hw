@@ -135,7 +135,7 @@ body {
 }
 
 .seasons {
-  height: 800px;
+  min-height: 800px;
   background: #000915;
   background-repeat: no-repeat;
   background-position: center;
@@ -183,15 +183,15 @@ body {
   line-height: normal;
   border: #9C0332;
   text-decoration: none;
+  transition: all 0.5s;
 }
 .seasons__go:hover {
   transform: scale(1.2);
-  transition: all 0.5s;
+  cursor: pointer;
 }
 
 .seasons__img {
-  width: 485px;
-  height: 333px;
+  max-width: 485px;
   padding-top: 233px;
 }
 
@@ -220,7 +220,6 @@ body {
     margin-left: 54.47px;
   }
   .seasons {
-    height: 653.61px;
     padding-top: 51px;
   }
   .seasons__heading {
@@ -238,12 +237,9 @@ body {
     line-height: 22px;
   }
   .seasons__img {
-    width: 344px;
-    height: 236px;
     padding-top: 64px;
   }
-  .img__svg {
+  .seasons__foto {
     width: 344px;
-    height: 236px;
   }
 }/*# sourceMappingURL=style.css.map */

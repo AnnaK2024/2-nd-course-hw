@@ -132,7 +132,7 @@ body {
 }
 
 .seasons{
-    height: 800px;
+    min-height: 800px;
     background: #000915;
     background-repeat: no-repeat;
     background-position: center;
@@ -179,15 +179,15 @@ body {
         line-height: normal;
         border: #9C0332;
         text-decoration: none;
+        transition: all 0.5s;
         &:hover{
             transform: scale(1.2);
-            transition: all 0.5s;
+            cursor: pointer;
         }
     }
 }
 .seasons__img{
-    width: 485px;
-    height: 333px;
+    max-width: 485px;
     padding-top: 233px;
 }
 
