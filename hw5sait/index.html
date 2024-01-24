@@ -22,9 +22,9 @@
     
     <section class="games center">
         <div class="games__boxes">
-            <a class="games__box_1 games__link" href="#">Игра 1</a>
-            <a class="games__box_2 games__link" href="#">Игра 2</a>
-            <a class="games__box_3 games__link" href="#">Игра 3</a>
+            <a class="games__box_1 games__link" href="#game1">Игра 1</a>
+            <a class="games__box_2 games__link" href="#game2">Игра 2</a>
+            <a class="games__box_3 games__link" href="#game3">Игра 3</a>
         </div>
         
     </section>
@@ -33,7 +33,7 @@
         <div class="seasons__heading">
             <h1 class="seasons__title">Времена года!</h1>
             <p class="seasons__text">Нажмите кнопку играть, введите номер месяца (от 1 до 12) и вы узнаете к какому времени года он относится</p>
-            <button onclick="month()" class="seasons__go">Играть!</button>
+            <button id="game1" onclick="month()" class="seasons__go">Играть!</button>
         </div>
         <div class="seasons__img">
             <img class="seasons__foto" src="img/imgSeasons.png" alt="Джойстик">
@@ -45,7 +45,7 @@
         <div class="remember__heading">
             <h1 class="remember__title">Запомни слова</h1>
             <p class="remember__text">При нажатии на кнопку играть, вы увидите несколько слов, которые вам необходимо запомнить</p>
-            <button class="remember__go">Играть!</button>
+            <button id="game2" onclick="words()"class="remember__go">Играть!</button>
         </div>
         <div class="remember__img">
             <img class="remember__foto" src="img/imgRememberTheWords.png" alt="Джойстик">
@@ -58,7 +58,7 @@
             <h1 class="riddles__title">Игра в загадки</h1>
             <p class="riddles__text">Компьютер загадывает загадку, вам необходимо ее угадать, если вы дадите не правильный ответ, то компьютер даст вам подсказку. У вас будет три попытки и две подсказки</p>
             <div class="riddles__button">
-                <button class="riddles__go">Играть!</button>
+                <button id="game3" onclick="riddle()"class="riddles__go">Играть!</button>
             </div>
         </div>
 
