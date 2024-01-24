@@ -24,6 +24,7 @@
     }
     .seasons{
         padding-top: 51px;
+        padding-bottom: 85px;
         &__heading{
             align-items: center;
             padding-top: 0px;
@@ -44,6 +45,50 @@
     }
     .seasons__foto{
         width: 344px;
+    }
+
+    .remember{
+        padding-top: 51px;
+        padding-bottom: 85px;
+        &__heading{
+            align-items: center;
+            padding-top: 0px;
+        }
+        &__title{
+            text-align: center;
+            font-size: 32px;
+        }
+        &__text{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px;
+        }
+    }
+    .remember__img{
+        padding-top: 64px;
+    }
+    .remember__foto{
+        width: 344px;
+    }
+
+    .riddles{
+        padding-top: 51px;
+        padding-bottom: 85px;
+        &__heading{
+            align-items: center;
+            padding-top: 0px;
+        }
+        &__title{
+            text-align: center;
+            font-size: 32px;
+        }
+        &__text{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px;
+        }
     }
 }
 

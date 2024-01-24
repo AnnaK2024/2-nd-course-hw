@@ -14,7 +14,7 @@ body {
 }
 
 .top {
-  height: 1024px;
+  max-height: 1024px;
   background-image: url(img/imgTop.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -23,6 +23,7 @@ body {
 
 .header {
   padding-top: 217px;
+  padding-bottom: 493px;
 }
 .header__title {
   font-size: 64px;
@@ -135,7 +136,7 @@ body {
 }
 
 .seasons {
-  min-height: 800px;
+  max-height: 800px;
   background: #000915;
   background-repeat: no-repeat;
   background-position: center;
@@ -195,6 +196,132 @@ body {
   padding-top: 233px;
 }
 
+.remember {
+  max-height: 800px;
+  background: #000915;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+}
+.remember__heading {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  padding-top: 282px;
+}
+.remember__title {
+  color: #FFF;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-size: 48px;
+}
+.remember__text {
+  max-width: 584px;
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 32px;
+}
+.remember__go {
+  display: flex;
+  align-items: center;
+  width: 234.063px;
+  justify-content: center;
+  height: 48.603px;
+  border-radius: 30px;
+  background: #9C0332;
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: #9C0332;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+.remember__go:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.remember__img {
+  max-width: 485px;
+  padding-top: 233px;
+}
+
+.riddles {
+  height: 800px;
+  background-image: url(img/imgRiddles.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.riddles__heading {
+  display: flex;
+  flex-direction: column;
+  padding-top: 276px;
+  padding-bottom: 288px;
+}
+.riddles__title {
+  color: #FFF;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-size: 48px;
+  text-align: center;
+  padding-bottom: 32px;
+}
+.riddles__text {
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 32px;
+  text-align: center;
+  padding-bottom: 32px;
+}
+.riddles__button {
+  text-align: center;
+}
+.riddles__go {
+  width: 234.063px;
+  height: 48.603px;
+  border-radius: 30px;
+  background: #9C0332;
+  color: #FFF;
+  font-size: 18px;
+  border: #9C0332;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+.riddles__go:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.footer {
+  max-height: 80px;
+  background: #000915;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.footer__rights {
+  font-size: 12px;
+  color: #FFF;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  text-align: center;
+}
+
 @media (max-width: 767px) {
   .center {
     padding-left: 16px;
@@ -221,6 +348,7 @@ body {
   }
   .seasons {
     padding-top: 51px;
+    padding-bottom: 85px;
   }
   .seasons__heading {
     align-items: center;
@@ -241,5 +369,47 @@ body {
   }
   .seasons__foto {
     width: 344px;
+  }
+  .remember {
+    padding-top: 51px;
+    padding-bottom: 85px;
+  }
+  .remember__heading {
+    align-items: center;
+    padding-top: 0px;
+  }
+  .remember__title {
+    text-align: center;
+    font-size: 32px;
+  }
+  .remember__text {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+  }
+  .remember__img {
+    padding-top: 64px;
+  }
+  .remember__foto {
+    width: 344px;
+  }
+  .riddles {
+    padding-top: 51px;
+    padding-bottom: 85px;
+  }
+  .riddles__heading {
+    align-items: center;
+    padding-top: 0px;
+  }
+  .riddles__title {
+    text-align: center;
+    font-size: 32px;
+  }
+  .riddles__text {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
   }
 }/*# sourceMappingURL=style.css.map */
