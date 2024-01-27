@@ -15,11 +15,13 @@ let str = numB.join(' ');
 console.log(str);
 
 //* Задача 4
-const numC = [
-    [1 , 1, 1],
-    [1 , 1, 1],
-    [1 , 1, 1],
-]
+let numC = []
+for (let i = 0; i < 3; i++) {
+  numC[i] = [];
+  for (let j = 0; j < 3; j++) {
+    numC[i][j] = 1;
+  };
+};
 console.log(numC);
 
 //* Задача 5
@@ -53,3 +55,23 @@ const jFirst = [1, 2, 3];
 const jSecond = [4, 5, 6];
 const result = jFirst.concat(jSecond);
 console.log(result);
+
+// Задание 10
+const numH = [3, 1, 7, 9, 5, 8];
+for (let i = 0; i < numH.length - 1; i++) {
+    console.log(numH[i] + numH[i + 1]);
+}
+
+// Задание 11
+const numK = [3, 8, 4, 6, 9];
+let square = numK.map(el=> (el**2));
+console.log(square);
+
+// Задание 12
+const numL = (['слово', '', 'слог', 'длинное предложение', 'буква']);
+function numL1() {
+    for (let i = 0; i < numL1.length; i++) {
+        const element = numL1[i];
+    }
+}
+console.log(numL)
