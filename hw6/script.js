@@ -29,7 +29,27 @@ console.log(numD);
 
 //* Задача 6
 const numE = [9, 8, 7, 'a', 6, 5];
-numE = numE.sort();
+numE.sort();
+numE.pop();
 console.log(numE);
 
+//* Задача 7
+const numG = [9, 8, 7, 6, 5];
+let guess = Number(prompt('Введи число от 1 до 10'));
+if (numG.includes(guess)) {
+    alert('Угадал');
+} else {
+    alert('Не угадал');
+}
 
+// *Задание 8
+let numF = 'abcdef';
+numF = numF.split("").reverse().join('');
+console.log(numF);
+
+//* Задание 9
+const numJ = [[1, 2, 3,],[4, 5, 6]];
+const jFirst = [1, 2, 3];
+const jSecond = [4, 5, 6];
+const result = jFirst.concat(jSecond);
+console.log(result);
