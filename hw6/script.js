@@ -80,15 +80,15 @@ console.log(numL1(numL));
 
 // Задание 13
 function filterPositive(array) {
-    const numM = [];
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] < 0) {
-            numM.push(array[i])
-        }
-    }
-    return numM
+  const numM = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] < 0) {
+       numM.push(array[i])
+    }    
+  }
+  return numM
 }    
- console.log(filterPositive([-1, 0, 5, -10, 56]));
+console.log(filterPositive[-1, 0, 5, -10, 56]);
 
 filterPositive([-1, 0, 5, -10, 56] ); // => [-1, -10]
 filterPositive([-25, 25, 0, -1000, -2]); // => [-25, -1000, -2]
