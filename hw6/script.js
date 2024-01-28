@@ -68,10 +68,60 @@ let square = numK.map(el=> (el**2));
 console.log(square);
 
 // Задание 12
-const numL = (['слово', '', 'слог', 'длинное предложение', 'буква']);
-function numL1() {
-    for (let i = 0; i < numL1.length; i++) {
-        const element = numL1[i];
+const numL = ['слово', '', 'слог', 'длинное предложение', 'буква'];
+function numL1(numL) {
+    let newnum = [];
+ for (let i = 0; i < numL.length; i++) {
+     newnum.push( numL[i].length);
+ }
+ return newnum;
+} 
+console.log(numL1(numL));
+
+// Задание 13
+function filterPositive(array) {
+    const numM = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] < 0) {
+            numM.push(array[i])
+        }
     }
-}
-console.log(numL)
+    return numM
+}    
+ console.log(filterPositive([-1, 0, 5, -10, 56]));
+
+filterPositive([-1, 0, 5, -10, 56] ); // => [-1, -10]
+filterPositive([-25, 25, 0, -1000, -2]); // => [-25, -1000, -2]
+
+// Задание 14
+const numO = (length, max) => (
+    [...new Array(length)]
+      .map(() => Math.round(Math.random() * max))
+  );
+const numbers = numO(10, 10);
+console.log(numbers);
+
+const namOeven = numbers.filter(number => {
+    return number % 2 === 0;
+    });
+console.log(namOeven);
+
+// Задание 15
+const numP = (length, max) => (
+    [...new Array(length)]
+      .map(() => Math.round(Math.random() * max))
+  );
+const numb = numP(6, 10);
+console.log(numb);
+
+const numP1 = (numb) => numb.reduce((acc, c) => acc + c, 0) / numb.length;
+const average = numP1(numb);
+console.log(average);
+
+
+
+ 
+
+
+
+
