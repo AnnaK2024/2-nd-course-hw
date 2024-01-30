@@ -1,8 +1,8 @@
 //* Задача 1
 const num = [1, 5, 4, 10, 0, 3];
 for (let i = 0; i < num.length; i++) {
-    if (num[i] === 10) break;
-    console.log(num[i]);
+  console.log(num[i]);
+  if (num[i] === 10) break;
 }
 
 //* Задача 2
@@ -51,10 +51,8 @@ console.log(numF);
 
 //* Задание 9
 const numJ = [[1, 2, 3,],[4, 5, 6]];
-const jFirst = [1, 2, 3];
-const jSecond = [4, 5, 6];
-const result = jFirst.concat(jSecond);
-console.log(result);
+const flat = numJ.flat()
+console.log(flat)
 
 // Задание 10
 const numH = [3, 1, 7, 9, 5, 8];
