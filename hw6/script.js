@@ -8,20 +8,27 @@ for (let i = 0; i < num.length; i++) {
 //* Задача 2
 const numA = [1, 5, 4, 10, 0, 3];
 console.log(numA.indexOf(4));
+// альтернативный вариант
+// const numA = [1, 5, 4, 10, 0, 3];
+// let res;
+// numA.forEach((el, i) => {
+  // if (el === 4) res = i;
+// })
+// console.log(res);
 
 //* Задача 3
 const numB = [1, 3, 5, 10, 20];
-let str = numB.join(' ');
-console.log(str);
+console.log(numB.join(' '));
 
 //* Задача 4
 let numC = []
-for (let i = 0; i < 3; i++) {
-  numC[i] = [];
-  for (let j = 0; j < 3; j++) {
-    numC[i][j] = 1;
-  };
-};
+for (i = 0; i < 3; i++) {
+  const nestNumC = [];
+  for (j = 0; j < 3; j++) {
+    nestNumC.push(1);
+  }
+  numC.push(nestNumC);
+}
 console.log(numC);
 
 //* Задача 5
@@ -33,12 +40,15 @@ console.log(numD);
 const numE = [9, 8, 7, 'a', 6, 5];
 numE.sort();
 numE.pop();
+// алтернативная запись numE.sort((a,b) => a-b).pop();
 console.log(numE);
 
 //* Задача 7
 const numG = [9, 8, 7, 6, 5];
 let guess = Number(prompt('Введи число от 1 до 10'));
-if (numG.includes(guess)) {
+if (isNaN(guess)) {
+  alert('Не корректно введенны данные');
+} else if (numG.includes(guess)) {
     alert('Угадал');
 } else {
     alert('Не угадал');
@@ -62,58 +72,50 @@ for (let i = 0; i < numH.length - 1; i++) {
 
 // Задание 11
 const numK = [3, 8, 4, 6, 9];
-let square = numK.map(el=> (el**2));
-console.log(square);
+function arr (nums) {
+  return nums.map(el=> el**2);
+}
+console.log(arr(numK));
 
 // Задание 12
 const numL = ['слово', '', 'слог', 'длинное предложение', 'буква'];
 function numL1(numL) {
-    let newnum = [];
- for (let i = 0; i < numL.length; i++) {
-     newnum.push( numL[i].length);
- }
- return newnum;
-} 
+  return numL.map(el => el.length);
+}
 console.log(numL1(numL));
 
 // Задание 13
 function filterPositive(array) {
   const numM = [];
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] < 0) {
-       numM.push(array[i])
-    }    
-  }
-  return numM
+  numM.push(array.filter(el => el < 0 ));
+  return numM;
 }    
-console.log(filterPositive[-1, 0, 5, -10, 56]);
-
-filterPositive([-1, 0, 5, -10, 56] ); // => [-1, -10]
-filterPositive([-25, 25, 0, -1000, -2]); // => [-25, -1000, -2]
+console.log(filterPositive([-1, 0, 5, -10, 56] ));
+console.log(filterPositive([-25, 25, 0, -1000, -2]));
 
 // Задание 14
 const numO = (length, max) => (
     [...new Array(length)]
       .map(() => Math.round(Math.random() * max))
   );
-const numbers = numO(10, 10);
-console.log(numbers);
+const randomNumbers = numO(10, 10);
+console.log(randomNumbers);
 
-const namOeven = numbers.filter(number => {
-    return number % 2 === 0;
+const evenNumbers = randomNumbers.filter(num => {
+    return num % 2 === 0;
     });
-console.log(namOeven);
+console.log(evenNumbers);
 
 // Задание 15
 const numP = (length, max) => (
     [...new Array(length)]
       .map(() => Math.round(Math.random() * max))
   );
-const numb = numP(6, 10);
-console.log(numb);
+const randomNumber = numP(6, 10);
+console.log(randomNumber);
 
-const numP1 = (numb) => numb.reduce((acc, c) => acc + c, 0) / numb.length;
-const average = numP1(numb);
+const arithmeticMean = (randomNumber) => randomNumber.reduce((acc, c) => acc + c, 1) / randomNumber.length;
+const average = arithmeticMean(randomNumber);
 console.log(average);
 
 
