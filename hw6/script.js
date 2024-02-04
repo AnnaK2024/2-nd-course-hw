@@ -109,12 +109,12 @@ console.log(evenNumbers);
 // Задание 15
 const numP = (length, max) => (
     [...new Array(length)]
-      .map(() => Math.round(Math.random() * max))
+      .map(() => Math.round(Math.random() * max)+1)
   );
 const randomNumber = numP(6, 10);
 console.log(randomNumber);
 
-const arithmeticMean = (randomNumber) => randomNumber.reduce((acc, c) => acc + c, 1) / randomNumber.length;
+const arithmeticMean = (randomNumber) => randomNumber.reduce((acc, c) => acc + c, 0) / randomNumber.length;
 const average = arithmeticMean(randomNumber);
 console.log(average);
 
