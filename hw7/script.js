@@ -8,7 +8,7 @@ if (riddle.toUpperCase() === answer.toUpperCase()) {
 }
 console.log(answer)
 
-// Задача 2
+// Задача 2 
 function searchStart(arr, str) {
   const products = arr.filter((el)=> el.toLowerCase().includes(str.toLowerCase()));
   return products;
@@ -36,12 +36,6 @@ console.log(getRandomInt(1, 10));
 
 // Задача 6
 function getRandomArrNumbers(n) {
-  const arr = [];
-  let i = n/2
-  i = Math.floor(i);
-  for (let index = 0; index < i; index++) {
-    return arr(Math.round(Math.random()*n))
-  };
+  return Math.round (Math.random()*(maxValue-minValue)) + minValue;
 }
-getRandomArrNumbers(12)
-
+getRandomArrNumbers(12);
