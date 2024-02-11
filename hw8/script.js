@@ -57,6 +57,17 @@ setTimeout(() => {
   console.log('30 секунд прошло!');
 }, 30000);
 
+// //Альтернативный вариант через функцию
+// function func(delay) {
+//   let cat = setInterval(() => console.log(new Date()), delay);
+
+//   setTimeout(() => {
+//     clearInterval(cat);
+//     console.log(`${delay / 100} секунд прошло`);
+//   }, delay * 10);
+// }
+// func(4000);
+
 // Задача 4
 function delayForSecond(callback) {
   setTimeout(callback, 1000);
@@ -69,9 +80,8 @@ delayForSecond(function () {
 // Задача 5
 function delayForSecond(cb) {
   setTimeout(() => {
-      console.log('Прошла одна секунда');
-      if(cb) { 	cb(); }
-
+    console.log('Прошла одна секунда');
+    if(cb) { 	cb(); }
   }, 1000)
 }
 
