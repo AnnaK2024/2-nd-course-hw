@@ -109,7 +109,7 @@ console.log(evenNumbers);
 // Задание 15
 const numP = (length, max) => (
     [...new Array(length)]
-      .map(() => Math.round(Math.random() * max)+1)
+      .map(() => Math.round((Math.random() * (max-1))+1))
   );
 const randomNumber = numP(6, 10);
 console.log(randomNumber);
