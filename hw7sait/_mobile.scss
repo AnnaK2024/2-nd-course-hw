@@ -1,0 +1,95 @@
+@media (max-width: 767px) {
+    .center{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .top{
+        height: 735px;
+    }
+    .header{
+        padding-top: 238px;
+        padding-bottom: 238px;
+        &__title{
+            font-size: 32px;
+            text-align: center;
+        }
+        &__text{
+            font-size: 14px;
+            line-height: 22px;
+            text-align: center;
+        }
+        &__go{
+            margin-left: 54.47px;
+        }
+    }
+    .seasons{
+        padding-top: 51px;
+        padding-bottom: 85px;
+        &__heading{
+            align-items: center;
+            padding-top: 0px;
+        }
+        &__title{
+            text-align: center;
+            font-size: 32px;
+        }
+        &__text{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px;
+        }
+    }
+    .seasons__img{
+        padding-top: 64px;
+    }
+    .seasons__foto{
+        width: 344px;
+    }
+
+    .remember{
+        padding-top: 51px;
+        padding-bottom: 85px;
+        &__heading{
+            align-items: center;
+            padding-top: 0px;
+        }
+        &__title{
+            text-align: center;
+            font-size: 32px;
+        }
+        &__text{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px;
+        }
+    }
+    .remember__img{
+        padding-top: 64px;
+    }
+    .remember__foto{
+        width: 344px;
+    }
+
+    .riddles{
+        padding-top: 51px;
+        padding-bottom: 85px;
+        &__heading{
+            align-items: center;
+            padding-top: 0px;
+        }
+        &__title{
+            text-align: center;
+            font-size: 32px;
+        }
+        &__text{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px;
+        }
+    }
+}
+
+
