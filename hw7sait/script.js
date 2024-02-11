@@ -14,18 +14,16 @@ function month() {
 }
 
 function gameWords() {
-  const fruits = ['Яблоко', 'Груша', 'Дыня', 'Виноград', 'Персик', 'Апельсин', 'Мандарин'];
+  let fruits = ['Яблоко', 'Груша', 'Дыня', 'Виноград', 'Персик', 'Апельсин', 'Мандарин'];
     alert (fruits.sort(() => Math.random() - 0.5));
-  const questionOne = prompt('Какое слово было первым?');
-  questionOne = questionOne.toLocaleLowerCase();
-  const questionToo = prompt('Какое слово было вторым?');
-  questionToo = questionToo.toLocaleLowerCase();
-    if (fruits[0] === questionOne && fruits[fruits.length -1] === questionToo ) {
+  let questionOne = prompt('Какое слово было первым?').toLowerCase();
+  let questionToo = prompt('Какое слово было последним?').toLowerCase();
+    if (fruits[0].toLowerCase() === questionOne && fruits[fruits.length -1].toLowerCase() === questionToo) {
       alert ('Молодец! Верно!');
-    } else if (fruits[0] !==questionOne || fruits[fruits.length -1] !== questionToo) {
-      alert ('Это было близко к победе!');
+    } else if (fruits[0].toLowerCase() !==questionOne && fruits[fruits.length -1].toLowerCase() !== questionToo) {
+      alert ('Не верно.Попробуй еще раз!');
     } else {
-      alert ('Не верно.Попробуй еще раз');
+      alert ('Это было близко к победе.');
     }
 }
 
