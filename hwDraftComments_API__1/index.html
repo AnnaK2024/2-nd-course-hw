@@ -83,35 +83,36 @@
     const textElement = document.getElementById ('text-input');
     const buttonElement = document.getElementById ('add-button');
 
+    const getComments = () => {
+      const fetchPromise = fetch("https://wedev-api.sky.pro/api/v1/:anna-kalina/comments", {
 
-    const fetchPromise = fetch("https://wedev-api.sky.pro/api/v1/:anna-kalina/comments", {
+       method: "GET"
 
-     method: "GET"
-
-    });
-
-    fetchPromise.then((response) => {
-
-     const jsonPromise = response.json();
-
-      jsonPromise.then((responseData) => {
-        
-        const appComments = responseData.comments.map((comment) => {
-
-          return {
-            name : comment.author.name,
-            date : new Date(comment.date).toLocaleDateString('ru-RU', { year: '2-digit', month: '2-digit', day: '2-digit' }) + ' ' + new Date(comment.date).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-            comment : comment.text,
-            likes : comment.likes,
-            sLiked: false,
-          };
-        });
-      
-        сommentators = appComments;
-        renderCommentators();
       });
-    });
 
+      fetchPromise.then((response) => {
+
+       const jsonPromise = response.json();
+
+        jsonPromise.then((responseData) => {
+        
+          const appComments = responseData.comments.map((comment) => {
+
+            return {
+              name : comment.author.name,
+              date : new Date(comment.date).toLocaleDateString('ru-RU', { year: '2-digit', month: '2-digit', day: '2-digit' }) + ' ' + new Date(comment.date).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+              comment : comment.text,
+              likes : comment.likes,
+              isLiked: false,
+            };
+          });
+      
+          сommentators = appComments;
+          renderCommentators();
+        });
+      });
+    };
+    getComments();
 
     let сommentators = [];
 
@@ -218,15 +219,15 @@
     }
     renderCommentators();
 
-    const sanitizeHtml = (htmlString) => {
-      return htmlString
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("QUOTE_BEGIN", "<div class='quote'>")
-      .replaceAll("QUOTE_END", "</div>")
-    };
+    // const sanitizeHtml = (htmlString) => {
+    //   return htmlString
+    //   .replaceAll("&", "&amp;")
+    //   .replaceAll("<", "&lt;")
+    //   .replaceAll(">", "&gt;")
+    //   .replaceAll('"', "&quot;")
+    //   .replaceAll("QUOTE_BEGIN", "<div class='quote'>")
+    //   .replaceAll("QUOTE_END", "</div>")
+    // };
 
     buttonElement.addEventListener("click", () => {
       nameElement.classList.remove("error");
@@ -270,7 +271,7 @@
         }),
       }).then((response) => {
         response.json().then((responseData) => {
-          сommentators = responseData.comments;
+          getComments();
           renderCommentators();
         });
         
