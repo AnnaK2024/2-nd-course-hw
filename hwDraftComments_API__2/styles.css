@@ -253,4 +253,12 @@ font-size: 25px;
 #preloader.preloader-hidden {
 display: none;
 }
+.hidden {
+  display: none;
+}
+.loader {
+  padding-top: 50px;
+  font-family: Helvetica;
+  font-size: 25px;  
+}
 
