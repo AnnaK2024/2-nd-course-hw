@@ -250,6 +250,30 @@ font-family: Helvetica;
 font-size: 25px;
 }
 
+p {
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
 #preloader.preloader-hidden {
 display: none;
 }
@@ -259,6 +283,15 @@ display: none;
 .loader {
   padding-top: 50px;
   font-family: Helvetica;
-  font-size: 25px;  
+  font-size: 25px;
+  display:inline-block;
+  clip-path: inset(0 3ch 0 0);
+  animation: l 1s steps(4) infinite;
 }
+@keyframes l {
+  to {
+    clip-path: inset(0 -1ch 0 0)
+  }
+}
+
 

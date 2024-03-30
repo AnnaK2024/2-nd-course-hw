@@ -7,11 +7,10 @@
   </head>
 
   <body>
-    </div>
-    <div id='preloader'>
-      <p class="preloader-text">Пожалуйста, подождите, загружаются комментарии...</p>
-    </div>
     <div class="container">
+      <div id='preloader'>
+        <p class="preloader-text">Пожалуйста, подождите, загружаются комментарии...</p>
+      </div>
       <ul id="list" class="comments">
         <!-- Список ренедрится из JS -->
         <!-- <li class="comment">
@@ -279,7 +278,7 @@
       console.log("Начинаем делать запрос");
 
       addForm.classList.add("hidden");
-      loader.textContent = 'Комментарий добавляется...';
+      loader.textContent = 'Комментарий добавляется .....';
 
 
       fetch("https://wedev-api.sky.pro/api/v1/:anna-kalina/comments", {
