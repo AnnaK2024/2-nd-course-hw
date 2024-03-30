@@ -12,7 +12,6 @@
       <p class="preloader-text">Пожалуйста, подождите, загружаются комментарии...</p>
     </div>
     <div class="container">
-   
       <ul id="list" class="comments">
         <!-- Список ренедрится из JS -->
         <!-- <li class="comment">
@@ -79,9 +78,6 @@
     .error {
       background-color: rgb(141, 216, 241);
     }
-    .hide {
-      display: none;
-    }
   </style>
 
   <script>
@@ -99,8 +95,6 @@
     const loader = document.querySelector(".loader");
 
     let сommentators = [];
-
-
 
     const getComments = () => {
       return fetch("https://wedev-api.sky.pro/api/v1/:anna-kalina/comments", {
@@ -123,7 +117,7 @@
           сommentators = appComments;
           renderCommentators();
           loader.textContent = '';
-          addForm.classList.remove("hide");
+          addForm.classList.remove('hidden');
           preloader.classList.add('preloader-hidden');
         });
     };
@@ -284,7 +278,7 @@
       const startAt = Date.now();
       console.log("Начинаем делать запрос");
 
-      addForm.classList.add("hide");
+      addForm.classList.add('hidden');
       loader.textContent = 'Комментарий добавляется...';
 
 
@@ -309,9 +303,8 @@
         .then(() => {
           return getComments();
         })
-        // .then(() => {
-        //   addForm.classList.remove("hide");
-        // });
+        .then(() => {
+        });
 
         getComments();
         renderCommentators();
