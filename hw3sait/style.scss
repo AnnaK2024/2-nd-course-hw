@@ -1,0 +1,98 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Montserrat", sans-serif;
+}
+.center {
+    padding-left: calc(50% - 600px);
+    padding-right: calc(50% - 600px);
+}
+.top{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) -7.35%, #000915 100%), lightgray 50% / cover no-repeat;
+    background-image: url(img/imgTop.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}   
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 217px;
+    padding-bottom: 495px;
+    &__title{
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        color: #FFF;
+        padding-bottom: 32px;
+        width: 788.778px;
+    }
+    &__text{
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 32px; 
+        color: #FFF;
+        padding-bottom: 44px;
+        width: 481px;
+    }
+    &__link{
+        flex-shrink: 0;
+        height: 48.603px;
+        border-radius: 30px;
+        background: #9C0332;
+        color: #FFF;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        width: 234.063px;
+        height: 48.603px;
+    }
+}
+
+.product{
+    background: #000915;
+    background-repeat: no-repeat;
+    background-position: center;
+    &__box{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 32px;
+        padding-top: 128px;
+        padding-bottom: 128px;
+    }
+    &__link{
+        width: 378px;
+        height: 300px;
+        border-radius: 16px;
+        color: #FFF;
+        display: flex;
+        flex-direction: column-reverse;
+        padding-left: 32px;
+        padding-bottom: 32px;
+        font-size: 24px;
+    }
+    &__link_1{
+        background-image: url(img/game1.jpg);
+    }
+    &__link_2{
+        background-image: url(img/game2.jpg);
+    }    
+    &__link_3{
+        background-image: url(img/game3.jpg);
+    }
+}  
+
+@import 'mobile'
+
+
+
