@@ -63,12 +63,11 @@
 
     const getComments = () => {
       return fetch("https://wedev-api.sky.pro/api/v1/:anna-kalina/comments", {
-       method: "GET"
+       method: "GET" 
       })
-        .then((response) => {
-         return response.json();
+        .then((response) => {  //
+          return response.json();
         })
-
         .then((responseData) => {
           const appComments = responseData.comments.map((comment) => {
             return {
@@ -84,8 +83,9 @@
           loader.textContent = '';
           addForm.classList.remove("hidden");
           preloader.classList.add('preloader-hidden');
-        });
+        })
     };
+    getComments();
 
     const renderCommentators = () => {
       const commentatorsHtml = сommentators.map((сommentator, index) => {
@@ -264,21 +264,21 @@
            return response.json();
         })  
         .then(() => {
-          return getComments();
           nameElement.value = "";
           textElement.value = "";
+          return getComments();
         })
         .catch((error) => {
            
-          if (error.messaqe === "Сервер упал") {
+          if (error.message === "Сервер упал") {
             alert("Нет интернета");
 
           }
-          if (error.messaqe === "Вводимые данные слишком короткие") {
+          if (error.message === "Вводимые данные слишком короткие") {
             alert("Имя или тект менее трех символов");
 
           }
-          if (error.messaqe === "Failed to fetch ") {
+          if (error.message === "Failed to fetch") {
             alert("Кажется что-то пошло не так, попробуй позже..");
           }
           
@@ -287,10 +287,22 @@
           addForm.classList.remove("hidden");
         });
 
-        getComments();
         renderCommentators();
     });
     renderCommentators();
+
+    // const handlePostClick = () => {
+    
+    //  postComment(text.value, name.value)
+    //   .catch((error) => {
+    //     if (error.message === "Ошибка сервера") {
+    //       handlePostClick();
+    //     }
+    //   });
+    
+    // };
+
+    // addButton.addEventListener("click", handlePostClick);
 
     const formElement = document.getElementById ('form');
      formElement.addEventListener('keyup', keyEvent);
