@@ -29,7 +29,6 @@ export function getPost (name, text) {
      if (response.status === 400) {
         throw new Error("Вводимые данные слишком короткие");
      }  
-          
         return response.json();
     }) 
 };
