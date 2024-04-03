@@ -1,5 +1,4 @@
-
-"use strict";
+import { getComments, getPost } from "./api.js";
 
 window.onload = function() {
   let preloader = document.getElementById('preloader');
@@ -14,48 +13,39 @@ const loader = document.querySelector(".loader");
 
 let сommentators = [];
 
-const getComments = () => {
-  return fetch("https://wedev-api.sky.pro/api/v1/:anna-kalina/comments", {
-   method: "GET" 
-  })
-    .then((response) => {
-      if (response.status === 500) {
-        throw new Error("Сервер упал");
+const getCom = () => {
+
+  getComments ().then((responseData) => {
+    const appComments = responseData.comments.map((comment) => {
+      return {
+        name : comment.author.name,
+        date : new Date(comment.date).toLocaleDateString('ru-RU', { year: '2-digit', month: '2-digit', day: '2-digit' }) + ' ' + new Date(comment.date).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+        comment : comment.text,
+        likes : comment.likes,
+        isLiked: comment.isLiked,
+      };
+    });
+
+    сommentators = appComments;
+    renderCommentators();
+    loader.textContent = '';
+    addForm.classList.remove("hidden");
+    preloader.classList.add('preloader-hidden');
+      
+  }).catch((error) => {
+      if (error.message === "Сервер упал") {
+        alert("Нет интернета");
       }
 
-      if (response.status === "Failed to fetch") {
-        throw new Error("Кажется что-то пошло не так, попробуй позже..");
+      if (error.message === "Failed to fetch") {
+        alert("Кажется что-то пошло не так, попробуй позже..");
       }
-      return response.json();
-    })
-    .then((responseData) => {
-      const appComments = responseData.comments.map((comment) => {
-        return {
-          name : comment.author.name,
-          date : new Date(comment.date).toLocaleDateString('ru-RU', { year: '2-digit', month: '2-digit', day: '2-digit' }) + ' ' + new Date(comment.date).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-          comment : comment.text,
-          likes : comment.likes,
-          isLiked: comment.isLiked,
-        };
-      });
 
-      сommentators = appComments;
-      renderCommentators();
-      loader.textContent = '';
-      addForm.classList.remove("hidden");
-      preloader.classList.add('preloader-hidden');
-    })
-    .catch((error) => {
-       
-       if (error.message === "Сервер упал") {
-         alert("Нет интернета");
-       }
-       if (error.message === "Failed to fetch") {
-         alert("Кажется что-то пошло не так, попробуй позже..");
-       }
-    });   
+    });  
+
 };
-getComments();
+
+getCom();
 
 const renderCommentators = () => {
   const commentatorsHtml = сommentators.map((сommentator, index) => {
@@ -86,7 +76,7 @@ const renderCommentators = () => {
   editEventListeners();
   answerComment();
 };
-getComments();
+getCom();
 
 function answerComment () {
   
@@ -204,68 +194,37 @@ buttonElement.addEventListener("click", () => {
 
   addForm.classList.add("hidden");
   loader.textContent = 'Комментарий добавляется .....';
-
-  fetch("https://wedev-api.sky.pro/api/v1/:anna-kalina/comments", {
-    method: "POST",
-    body: JSON.stringify ({
-      name: (nameElement.value),
-      text: (textElement.value),
-      forceError: true,
-    }),
+  
+  getPost ( {
+    text: textElement.value,
+    name: nameElement.value,
+  }).then(() => {
+    nameElement.value = "";
+    textElement.value = "";
+    return getCom();
   })
-    .then((response) => {
-      if (response.status === 500) {
-        // handlePostClick();
-        throw new Error("Сервер упал");
-      }
+  .catch((error) => {
+    if (error.message === "Сервер упал") {
+     alert("Нет интернета");
 
-      if (response.status === 400) {
-        throw new Error("Вводимые данные слишком короткие");
-      }  
-      
-       return response.json();
-    })  
-    .then(() => {
-      nameElement.value = "";
-      textElement.value = "";
-      return getComments();
-    })
-    .catch((error) => {
-       
-      if (error.message === "Сервер упал") {
-        alert("Нет интернета");
+    }
+    if (error.message === "Вводимые данные слишком короткие") {
+     alert("Имя или текст менее трех символов");
 
-      }
-      if (error.message === "Вводимые данные слишком короткие") {
-        alert("Имя или тект менее трех символов");
+    }
+    if (error.message === "Failed to fetch") {
+     alert("Кажется что-то пошло не так, попробуй позже..");
 
-      }
-      if (error.message === "Failed to fetch") {
-        alert("Кажется что-то пошло не так, попробуй позже..");
-      }
-      
+    }
       console.warn(error);
       loader.textContent = '';
       addForm.classList.remove("hidden");
-    });
+  });
 
-    renderCommentators();
-
-//  const handlePostClick = () => {
-
-//   postComment(text.value, name.value)
-//    .catch((error) => {
-
-//      if (error.message === 500) {
-
-//        handlePostClick();
-//      }
-
-//     });
-
-//   };
-
+  renderCommentators();
+  
 });
+
 renderCommentators();
 
 const sanitizeHtml = (htmlString) => {
