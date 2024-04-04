@@ -1,4 +1,5 @@
-import { getComments, getPost } from "./api.js";
+import { getComments } from "./api.js";
+import { getPost } from "./api.js";
 
 window.onload = function() {
   let preloader = document.getElementById('preloader');
@@ -32,16 +33,15 @@ const getCom = () => {
     addForm.classList.remove("hidden");
     preloader.classList.add('preloader-hidden');
       
-  }).catch((error) => {
-      if (error.message === "Сервер упал") {
-        alert("Нет интернета");
-      }
-
-      if (error.message === "Failed to fetch") {
-        alert("Кажется что-то пошло не так, попробуй позже..");
-      }
-
-    });  
+  })
+  .catch((error) => {
+    if (error.message === "Сервер упал") {
+      alert("Нет интернета");
+    }
+    if (error.message === "Failed to fetch") {
+      alert("Кажется что-то пошло не так, попробуй позже..");
+    }
+  });  
 
 };
 
@@ -195,37 +195,37 @@ buttonElement.addEventListener("click", () => {
   addForm.classList.add("hidden");
   loader.textContent = 'Комментарий добавляется .....';
   
-  getPost ( {
-    text: textElement.value,
+  getPost ({
     name: nameElement.value,
-  }).then(() => {
-    nameElement.value = "";
-    textElement.value = "";
-    return getCom();
+    text: textElement.value,
   })
-  .catch((error) => {
-    if (error.message === "Сервер упал") {
-     alert("Нет интернета");
+  .then(() => {
+      nameElement.value = "";
+      textElement.value = "";
+      return getCom();
+    })
+    .catch((error) => {
+       
+      if (error.message === "Сервер упал") {
+        alert("Нет интернета");
 
-    }
-    if (error.message === "Вводимые данные слишком короткие") {
-     alert("Имя или текст менее трех символов");
+      }
+      if (error.message === "Вводимые данные слишком короткие") {
+        alert("Имя или тект менее трех символов");
 
-    }
-    if (error.message === "Failed to fetch") {
-     alert("Кажется что-то пошло не так, попробуй позже..");
-
-    }
+      }
+      if (error.message === "Failed to fetch") {
+        alert("Кажется что-то пошло не так, попробуй позже..");
+      }
+      
       console.warn(error);
       loader.textContent = '';
       addForm.classList.remove("hidden");
-  });
+    });
 
-  renderCommentators();
-  
+    renderCommentators();
 });
-
-renderCommentators();
+renderCommentators()
 
 const sanitizeHtml = (htmlString) => {
   return htmlString

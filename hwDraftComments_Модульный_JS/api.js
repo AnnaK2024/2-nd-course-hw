@@ -15,20 +15,18 @@ export function getComments () {
 export function getPost (name, text) {
   return fetch("https://wedev-api.sky.pro/api/v1/:anna-kalina/comments", {
     method: "POST",
-    body: JSON.stringify ({
-      name: name,
-      text: text,
-    }),
+     body: JSON.stringify ({
+       name: name,
+       text: text,
+      }),
     })
     .then((response) => {
      if (response.status === 500) {
-    
        throw new Error("Сервер упал");
      }
-    
      if (response.status === 400) {
-        throw new Error("Вводимые данные слишком короткие");
+       throw new Error("Вводимые данные слишком короткие");
      }  
-        return response.json();
+      return response.json();
     }) 
 };
