@@ -1,5 +1,7 @@
 import { getComments } from "./api.js";
 import { getPost } from "./api.js";
+import { renderCommentators } from "./renderCommentators.js";
+
 
 window.onload = function() {
   let preloader = document.getElementById('preloader');
@@ -28,7 +30,7 @@ const getCom = () => {
     });
 
     сommentators = appComments;
-    renderCommentators();
+    renderCommentators({сommentators, answerComment, editEventListeners, initEventListeners});
     loader.textContent = '';
     addForm.classList.remove("hidden");
     preloader.classList.add('preloader-hidden');
@@ -43,38 +45,6 @@ const getCom = () => {
     }
   });  
 
-};
-
-getCom();
-
-const renderCommentators = () => {
-  const commentatorsHtml = сommentators.map((сommentator, index) => {
-    return `<li class="comment" data-index="${index}">
-      <div class="comment-header">
-       <div>${сommentator.name}</div>
-       <div>${сommentator.date}</div>
-      </div>
-      <div class="comment-body">
-       <div class="${сommentator.isEdit ? 'display-none' : 'comment-text'}">${sanitizeHtml(сommentator.comment)}</div>
-       <textarea type="textarea" class="${сommentator.isEdit ? 'add-form-text' : 'display-none'}" >${сommentator.comment}</textarea>
-      </div>
-      <div class="comment-footer">
-        <button class="${сommentator.isEdit ? 'edit-button' : 'save-button'}" data-index="${index}">Редактировать</button>
-        <button class="${сommentator.isEdit ? 'save-button' : 'textarea'}" data-index="${index}">Сохранить</button>
-      <div class="likes">
-        <span class="likes-counter">${сommentator.likes}</span>
-        <button data-like="${сommentator.likes}" data-index="${index}" class="like-button ${сommentators[index].isLiked ?'-active-like' : 'like-button'}"></button>
-      </div>
-    </div>
-    </li>`;
-  })
-  .join("");
-
-  listElement.innerHTML = commentatorsHtml;
-  
-  initEventListeners();
-  editEventListeners();
-  answerComment();
 };
 getCom();
 
@@ -91,7 +61,7 @@ function answerComment () {
     
       textElement.value = `QUOTE_BEGIN${сommentators[index].comment}\n${сommentators[index].name}QUOTE_END`;
 
-      renderCommentators();
+      renderCommentators({сommentators, answerComment, editEventListeners, initEventListeners});
 
     })
   }
@@ -104,7 +74,7 @@ const editEventListeners = () => {
       e.stopPropagation();
       const index = editButtonEl.dataset.index;
       сommentators[index].isEdit = !сommentators[index].isEdit;
-      renderCommentators();
+      renderCommentators({сommentators, answerComment, editEventListeners, initEventListeners});
     });
   }
 
@@ -115,7 +85,7 @@ const editEventListeners = () => {
       const index = saveButton.dataset.index;
       сommentators[index].isEdit = !сommentators[index].isEdit;
       сommentators[index].comment = saveButton.closest('.comment').querySelector('textarea').value
-      renderCommentators();
+      renderCommentators({сommentators, answerComment, editEventListeners, initEventListeners});
     });
   }
 }
@@ -157,12 +127,12 @@ const initEventListeners = () => {
           сommentators[index].isLiked = false;
         }
 
-        renderCommentators();
+        renderCommentators({сommentators, answerComment, editEventListeners, initEventListeners});
       })  
     })
   }
 }
-renderCommentators();
+renderCommentators({сommentators, answerComment, editEventListeners, initEventListeners});
 
 
 buttonElement.addEventListener("click", () => {
@@ -211,31 +181,20 @@ buttonElement.addEventListener("click", () => {
 
       }
       if (error.message === "Вводимые данные слишком короткие") {
-        alert("Имя или тект менее трех символов");
+        alert("Имя или текст менее трех символов");
 
       }
       if (error.message === "Failed to fetch") {
         alert("Кажется что-то пошло не так, попробуй позже..");
       }
-      
       console.warn(error);
       loader.textContent = '';
       addForm.classList.remove("hidden");
     });
 
-    renderCommentators();
+    renderCommentators({сommentators, answerComment, editEventListeners, initEventListeners});
 });
-renderCommentators()
-
-const sanitizeHtml = (htmlString) => {
-  return htmlString
-  .replaceAll("&", "&amp;")
-  .replaceAll("<", "&lt;")
-  .replaceAll(">", "&gt;")
-  .replaceAll('"', "&quot;")
-  .replaceAll("QUOTE_BEGIN", "<div class='quote'>")
-  .replaceAll("QUOTE_END", "</div>")
-};
+renderCommentators({сommentators, answerComment, editEventListeners, initEventListeners})
 
 const formElement = document.getElementById ('form');
  formElement.addEventListener('keyup', keyEvent);
@@ -248,7 +207,7 @@ const formElement = document.getElementById ('form');
 const removeButton = document.getElementById("deleteComment");
 removeButton.addEventListener("click", () => {
   сommentators.pop();
-  renderCommentators();
+  renderCommentators({сommentators, answerComment, editEventListeners, initEventListeners});
 });
 
 console.log("It works!");

@@ -12,13 +12,13 @@ export function getComments () {
      return response.json();
     })
 };
-export function getPost (name, text) {
+export function getPost ({name, text}) {
   return fetch("https://wedev-api.sky.pro/api/v1/:anna-kalina/comments", {
     method: "POST",
      body: JSON.stringify ({
        name: name,
        text: text,
-      }),
+     }),
     })
     .then((response) => {
      if (response.status === 500) {
