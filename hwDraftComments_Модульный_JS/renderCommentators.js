@@ -1,7 +1,8 @@
-
 const listElement = document.getElementById ('list');
 
-export const renderCommentators = (сommentators, initEventListeners, editEventListeners, answerComment ) => {
+export let сommentators = [];
+
+export const renderCommentators = (editEventListeners) => {
   const commentatorsHtml = сommentators.map((сommentator, index) => {
     return `<li class="comment" data-index="${index}">
       <div class="comment-header">
@@ -29,4 +30,67 @@ export const renderCommentators = (сommentators, initEventListeners, editEventL
   initEventListeners();
   editEventListeners();
   answerComment();
-};  
+};
+
+function delay(interval = 300) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, interval);
+  });
+}   
+
+const initEventListeners = () => {
+  const likeButtonElement = document.querySelectorAll(".like-button");
+  for ( const likeButtonEl of likeButtonElement) {
+
+    const index = likeButtonEl.dataset.index;
+    const counter = likeButtonEl.dataset.like;
+
+    likeButtonEl.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      likeButtonEl.classList.add("-loading-like");
+
+      delay(2000).then(() => {
+
+        if (сommentators[index].isLiked === false) {
+
+          const result = Number(counter) + 1;
+
+          сommentators[index].likes = result;
+          сommentators[index].isLiked = true;
+
+        } else if (сommentators[index].isLiked === true) {
+
+          const result = Number(counter) - 1;
+
+          сommentators[index].likes = result;
+          сommentators[index].isLiked = false;
+        }
+
+        renderCommentators();
+      })  
+    })
+  }
+}
+renderCommentators();
+
+function answerComment () {
+      
+  const commentsElements = document.querySelectorAll('.comment');
+
+  for (const commentsEl of commentsElements) { 
+
+    commentsEl.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      const index = commentsEl .dataset.index;
+    
+      textElement.value = `QUOTE_BEGIN${сommentators[index].comment}\n${сommentators[index].name}QUOTE_END`;
+
+      renderCommentators();
+
+    })
+  }
+};
