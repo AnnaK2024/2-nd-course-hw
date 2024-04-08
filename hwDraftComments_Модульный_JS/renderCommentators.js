@@ -1,8 +1,15 @@
+import { editEventListeners } from "./main.js";
+
 const listElement = document.getElementById ('list');
+const textElement = document.getElementById ('text-input');
 
 export let сommentators = [];
 
-export const renderCommentators = (editEventListeners) => {
+export function setComments (newComments) {
+  сommentators = newComments;
+};
+
+export const renderCommentators = () => {
   const commentatorsHtml = сommentators.map((сommentator, index) => {
     return `<li class="comment" data-index="${index}">
       <div class="comment-header">
@@ -94,3 +101,15 @@ function answerComment () {
     })
   }
 };
+
+export const sanitizeHtml = (htmlString) => {
+  return htmlString
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;")
+  .replaceAll("QUOTE_BEGIN", "<div class='quote'>")
+  .replaceAll("QUOTE_END", "</div>")
+};
+
+

@@ -1,6 +1,5 @@
 import { getComments, getPost  } from "./api.js";
-import { сommentators, renderCommentators } from "./renderCommentators.js";
-
+import {сommentators, renderCommentators, setComments } from "./renderCommentators.js";
 
 window.onload = function() {
   let preloader = document.getElementById('preloader');
@@ -13,32 +12,29 @@ const addForm = document.getElementById("form");
 const loader = document.querySelector(".loader");
 
 
-const getCom = () => {
-
-  getComments ().then((responseData) => {
-    const appComments = responseData.comments.map((comment) => {
+function getCom() {
+  getComments().then((responseData) => {
+    let appComments = responseData.comments.map((comment) => {
       return {
-        name : comment.author.name,
-        date : new Date(comment.date).toLocaleDateString('ru-RU', { year: '2-digit', month: '2-digit', day: '2-digit' }) + ' ' + new Date(comment.date).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-        comment : comment.text,
-        likes : comment.likes,
+        name: comment.author.name,
+        date: new Date(comment.date).toLocaleDateString('ru-RU', { year: '2-digit', month: '2-digit', day: '2-digit' }) + ' ' + new Date(comment.date).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+        comment: comment.text,
+        likes: comment.likes,
         isLiked: comment.isLiked,
         forceError: true,
       };
     });
 
-    сommentators = appComments;
+    setComments(appComments);
     renderCommentators();
     loader.textContent = '';
     addForm.classList.remove("hidden");
     preloader.classList.add('preloader-hidden');
-      
-  })
-};
 
-getCom();
+  });
+}
 
-const editEventListeners = () => { 
+export function editEventListeners () {
   const editButtonElements = document.querySelectorAll(".edit-button"); 
   for ( const editButtonEl of editButtonElements) { 
     editButtonEl.addEventListener("click", (e) => { 
@@ -59,7 +55,9 @@ const editEventListeners = () => {
       renderCommentators();
     });
   }
-}
+};
+
+getCom();
 
 buttonElement.addEventListener("click", () => {
   nameElement.classList.remove("error");
@@ -74,29 +72,6 @@ buttonElement.addEventListener("click", () => {
     return;
   };
 
- const currentDate = new Date();
-  function formatTime(currentDate){
-
-   const date = currentDate.getDate().toString().padStart(2, "0");
-   const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
-   const year = currentDate.getFullYear().toString().substr(2,2);
-
-   const h = currentDate.getHours().toString().padStart(2, "0");
-   const m = currentDate.getMinutes().toString().padStart(2, "0");
-
-   return `${date}.${month}.${year} ${h}:${m}`
-  }; 
-
-  const sanitizeHtml = (htmlString) => {
-    return htmlString
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("QUOTE_BEGIN", "<div class='quote'>")
-    .replaceAll("QUOTE_END", "</div>")
-  };
-
   addForm.classList.add("hidden");
   loader.textContent = 'Комментарий добавляется .....';
   
@@ -109,7 +84,7 @@ buttonElement.addEventListener("click", () => {
     textElement.value = "";
     return getCom();
   })
-  console.warn(error);
+  // console.warn(error);
   loader.textContent = '';
   addForm.classList.remove("hidden");
 });
