@@ -13,3 +13,20 @@ function month() {
       }
 }
 
+function words() {
+  let rem = prompt('Да Нет Незнаю');
+  if (rem === 'Да Нет Незнаю' ) {
+     return('Молодец! Верно!');
+  } else {
+     return('Попробуй еще раз');
+  }
+}
+
+function riddle() {
+  let rid = (prompt('Отгадай загадку - Висит груша, нельзя скушать'));
+      if (rid === груша ) {
+        return('Угадал!!');
+      }else {
+        return('Не угадал!');
+      }
+}
