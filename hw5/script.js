@@ -6,7 +6,10 @@ function min(a , b) {
         return b;
     }
 };
+// альтернативная запись тернальным оператором {return a<b ? a : b;}
 console.log(min(4 , 8));
+console.log(min(9 , 5));
+console.log(min(6 , 6));
 
 //*Задание 2
 function meaning() {
@@ -21,28 +24,28 @@ console.log(meaning());
 
 //*Задание 3.1
 function square(a) {
-  console.log(a*a);
+  console.log(a * a);
 }
-let b = square(2);
+square(3);
 
 //*Задание 3.2
-function square(c) {
-    return c*c;
-}
-let d = square(3);
+function square1(c) {
+    return c * c;
+};
+console.log(square1(5));
 
 //*Задание 4
 function greeting() {
-    let age = Number(prompt("Сколько Вам лет?"));
-    if (age <0) {
-        alert("Вы ввели неправильное значение");
-    } else if(age >=0 && age <= 12) {
-        alert("Привет, друг!");
+    let age = Number(prompt('Сколько вам лет?'));
+    if (age < 0) {
+     alert('Вы ввели неправильное значение');
+    } else if (age >= 0 && age <= 12) {
+     alert('Привет, друг!');
     } else {
-        alert("Добро пожаловать!");
+     alert('Добро пожаловать!');
     }
-}
-console.log(greeting());
+};
+greeting()
 
 //*Задание 5
 function choice() {
@@ -59,10 +62,11 @@ console.log(choice());
 //*Задание 6
 function check() {
     let request = prompt('Пожалуйста, введите число!');
+    request = Number(request);
     if (isNaN(request)) {
         return 'Переданный параметр не является числом';
     } else {
-        return request*3;
+        return `${request} в кубе равняется ${request ** 3}`;
     }
 };
 console.log(check());
@@ -96,20 +100,18 @@ console.log(circle2.getArea());
 console.log(circle2.getPerimeter());
 
 //*Задание 8
-let num = Number(prompt('Пожалуйста, введите номер месяца.'));  
-function month(num) {
+function month() {
+    let num = Number(prompt('Пожалуйста, введите номер месяца.')); 
       if (num === 1 || num === 2 || num === 12 ) {
         return 'Этот месяц относится к зимнему периоду';
-    }else if (num === 3 || num === 4 || num === 5 ) {
+      }else if (num === 3 || num === 4 || num === 5 ) {
         return 'Этот месяц относится к весеннему периоду'; 
-    }else if (num === 6 || num === 7 || num === 8 ) {
+      }else if (num === 6 || num === 7 || num === 8 ) {
         return 'Этот месяц относится к летнему периоду';
-    }else if (num === 9 || num === 10 || num === 11 ) {
+      }else if (num === 9 || num === 10 || num === 11 ) {
         return 'Этот месяц относится к осеннему периоду';
-    }else if (num >= 13) {
-        return 'Такого месяца не существует!'
+      }else if (num >= 13) {
+        return 'Некорректное число!';
     }
 };
-
-console.log(month(num));
-    
+console.log(month());
