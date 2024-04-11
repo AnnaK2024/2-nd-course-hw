@@ -2,18 +2,17 @@ import { renderCommentators, сommentators } from "./renderCommentators.js";
 
 const buttonElement = document.getElementById ('add-button');
 
-// export const currentDate = new Date();
-// function formatTime(currentDate){
+export const currentDate = (date) => {
+ let dateTime = new Date(date);
 
-//  const date = currentDate.getDate().toString().padStart(2, "0");
-//  const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
-//  const year = currentDate.getFullYear().toString().substr(2,2);
+ const day = String(dateTime.getDate()).padStart(2, '0');
+ const month = String(dateTime.getMonth()+1).padStart(2, '0');
+ const year = String(dateTime.getFullYear() - 2000);
+ const minutes = String(dateTime.getMinutes()).padStart(2, '0');
+ const hours = String(dateTime.getHours()).padStart(2, '0');
 
-//  const h = currentDate.getHours().toString().padStart(2, "0");
-//  const m = currentDate.getMinutes().toString().padStart(2, "0");
-
-//  return `${date}.${month}.${year} ${h}:${m}`
-// };
+ return `${day}.${month}.${year} ${hours}:${minutes}`;
+};
 
 export function delay(interval = 300) {
     return new Promise((resolve) => {
@@ -36,8 +35,6 @@ removeButton.addEventListener("click", () => {
   сommentators.pop();
   renderCommentators();
 });
-
-
   
 
 
