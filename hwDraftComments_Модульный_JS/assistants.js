@@ -35,7 +35,30 @@ removeButton.addEventListener("click", () => {
   сommentators.pop();
   renderCommentators();
 });
+
+// export const request_retry = async({ url, options, n }) => {
+//   try {
+//     return await fetch(url, options);
+//   } catch (e) {
+//     if (n <= 1) throw e;
+//     await sleep(1000);
+//     return await request_retry({url, options, n: n - 1});
+//   }
+// };
+// request_retry(url, options, 60);
   
+// const handlePostClick = () => {
+//   //...
+//   postComment(text.value, name.value)
+//     .catch((error) => {
+//       if (error.message === "Ошибка сервера") {
+//         handlePostClick();
+//       }
+//     });
+//   //...
+// };
+
+// addButton.addEventListener("click", handlePostClick);
 
 
 
