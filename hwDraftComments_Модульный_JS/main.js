@@ -1,5 +1,6 @@
 import { getComments, getPost  } from "./api.js";
 import { setComments, renderCommentators } from "./renderCommentators.js";
+import { checkingForEmptyLines } from "./validation.js";
 
 const nameElement = document.getElementById ('name-input');
 const textElement = document.getElementById ('text-input');
@@ -34,17 +35,8 @@ function getCom() {
 getCom();
 
 buttonElement.addEventListener("click", () => {
-  nameElement.classList.remove("error");
-  textElement.classList.remove("error");
-  
-  if (nameElement.value.trim() === "") {
-    nameElement.classList.add("error");
-    return;
-  }  
-  if (textElement.value.trim() === "") {
-    textElement.classList.add("error");
-    return;
-  };
+
+  checkingForEmptyLines();
 
   addForm.classList.add("hidden");
   loader.textContent = 'Комментарий добавляется .....';

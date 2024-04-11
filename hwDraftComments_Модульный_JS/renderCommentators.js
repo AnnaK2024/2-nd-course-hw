@@ -4,6 +4,7 @@ import { sanitizeHtml } from "./validation.js";
 const listElement = document.getElementById ('list');
 const textElement = document.getElementById ('text-input');
 
+
 export let сommentators = [];
 
 export function setComments (newComments) {
@@ -120,6 +121,7 @@ function answerComment () {
     })
   }
 };
+
 
 
 
