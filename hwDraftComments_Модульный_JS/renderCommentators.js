@@ -4,8 +4,6 @@ import { sanitizeHtml } from "./validation.js";
 const listElement = document.getElementById ('list');
 const textElement = document.getElementById ('text-input');
 
-
-
 export let сommentators = [];
 
 export function setComments (newComments) {
@@ -53,6 +51,7 @@ let initEventListeners = () => {
       e.stopPropagation();
 
       likeButtonEl.classList.add("-loading-like");
+      likeButtonEl.disabled = true;
 
       delay(2000).then(() => {
 
@@ -72,7 +71,7 @@ let initEventListeners = () => {
         }
 
         renderCommentators();
-      })  
+      }) 
     })
   }
 }
@@ -110,12 +109,14 @@ function answerComment () {
     commentsEl.addEventListener('click', (e) => {
       e.stopPropagation();
 
-      const index = commentsEl .dataset.index;
+      if ( isEdit === true) {
+
+       const index = commentsEl .dataset.index;
     
-      textElement.value = `QUOTE_BEGIN${сommentators[index].comment}\n${сommentators[index].name}QUOTE_END`;
+       textElement.value = `QUOTE_BEGIN${сommentators[index].comment}\n${сommentators[index].name}QUOTE_END`;
 
-      renderCommentators();
-
+       renderCommentators();
+      }
     })
   }
 };

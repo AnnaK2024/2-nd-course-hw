@@ -7,9 +7,6 @@ const buttonElement = document.getElementById ('add-button');
 const addForm = document.getElementById("form");
 const loader = document.querySelector(".loader");
 
-window.onload = function() {
-  let preloader = document.getElementById('preloader');
-};
 
 function getCom() {
   getComments().then((responseData) => {
@@ -20,6 +17,7 @@ function getCom() {
         comment: comment.text,
         likes: comment.likes,
         isLiked: comment.isLiked,
+        isEdit: false,
         forceError: true,
       };
     });
