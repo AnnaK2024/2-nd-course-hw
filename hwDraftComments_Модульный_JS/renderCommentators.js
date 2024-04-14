@@ -105,26 +105,18 @@ function answerComment () {
       
   const commentsElements = document.querySelectorAll('.comment');
 
-  let isEdit = true;
-
   for (const commentsEl of commentsElements) { 
 
     commentsEl.addEventListener('click', (e) => {
       e.stopPropagation();
-
-      if ( isEdit === true) {
 
        const index = commentsEl .dataset.index;
     
        textElement.value = `QUOTE_BEGIN${сommentators[index].comment}\n${сommentators[index].name}QUOTE_END`;
 
        renderCommentators();
-      }
-      if ( isEdit === false) {
-        return;
-      }
     })
-  }
+  };
 };
 
 

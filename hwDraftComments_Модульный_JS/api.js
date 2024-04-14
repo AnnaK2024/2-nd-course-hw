@@ -17,7 +17,7 @@ export function getComments () {
     }
     if (error.message === "Failed to fetch") {
       alert("Кажется что-то пошло не так, попробуй позже..");
-    }
+    };
   });
 };
 export function getPost ({name, text}) {
@@ -46,6 +46,6 @@ export function getPost ({name, text}) {
     }
     if (error.message === "Failed to fetch") {
       alert("Кажется что-то пошло не так, попробуй позже..");
-    }
-  })   
+    };
+  });   
 };
