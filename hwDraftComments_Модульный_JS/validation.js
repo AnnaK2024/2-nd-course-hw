@@ -1,7 +1,6 @@
 const nameElement = document.getElementById ('name-input');
 const textElement = document.getElementById ('text-input');
 
-
 export const sanitizeHtml = (htmlString) => {
     return htmlString
     .replaceAll("&", "&amp;")
