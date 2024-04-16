@@ -11,6 +11,14 @@ export function getComments () {
     }
      return response.json();
   })
+  .catch((error) => {
+    if (error.message === "Сервер упал") {
+      alert("Нет интернета");
+    }
+    if (error.message === "Failed to fetch") {
+      alert("Кажется что-то пошло не так, попробуй позже..");
+    };
+  });
 };
 
 export function getPost ({name, text}) {
@@ -29,5 +37,16 @@ export function getPost ({name, text}) {
       throw new Error("Вводимые данные слишком короткие");
     }  
     return response.json();
+  })
+    .catch((error) => {
+    if (error.message === "Сервер упал") {
+      alert("Нет интернета");
+    }
+    if (error.message === "Вводимые данные слишком короткие") {
+      alert("Имя или текст менее трех символов");
+    }
+    if (error.message === "Failed to fetch") {
+      alert("Кажется что-то пошло не так, попробуй позже..");
+    };
   })
 };
