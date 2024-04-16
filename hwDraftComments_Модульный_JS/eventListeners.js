@@ -1,5 +1,6 @@
 import { delay } from "./assistants.js";
 import { renderCommentators, сommentators } from "./renderCommentators.js";
+import { sanitizeHtml } from "./validation.js";
 
 const buttonElement = document.getElementById ('add-button');
 const textElement = document.getElementById ('text-input');
@@ -65,20 +66,21 @@ export function editEventListeners () {
   
 export function answerComment () {
         
-    const commentsElements = document.querySelectorAll('.comment');
+  const commentsElements = document.querySelectorAll('.comment');
   
-    for (const commentsEl of commentsElements) { 
+  for (const commentsEl of commentsElements) { 
   
-      commentsEl.addEventListener('click', (e) => {
-        e.stopPropagation();
+    commentsEl.addEventListener('click', (event) => {
+      event.stopPropagation();
   
-         const index = commentsEl .dataset.index;
+     const index = commentsEl .dataset.index;
       
-         textElement.value = `QUOTE_BEGIN${сommentators[index].comment}\n${сommentators[index].name}QUOTE_END`;
-  
-         renderCommentators();
-      })
-    };
+     textElement.value = `QUOTE_BEGIN${сommentators[index].comment}\n${сommentators[index].name}QUOTE_END`;
+     
+     renderCommentators();
+     
+    })
+  };
 };
 
 const formElement = document.getElementById ('form');

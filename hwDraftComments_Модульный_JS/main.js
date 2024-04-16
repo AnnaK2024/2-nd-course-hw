@@ -1,4 +1,4 @@
-import { getComments, getPost  } from "./api.js";
+import { getComments, getPost } from "./api.js";
 import { currentDate } from "./assistants.js";
 import { setComments, renderCommentators } from "./renderCommentators.js";
 import { checkingForEmptyLines } from "./validation.js";
@@ -30,14 +30,6 @@ function getCom() {
    preloader.classList.add('preloader-hidden');
 
   })
-  .catch((error) => {
-    if (error.message === "Сервер упал") {
-      alert("Нет интернета");
-    }
-    if (error.message === "Failed to fetch") {
-      alert("Кажется что-то пошло не так, попробуй позже..");
-    };
-  });
 };
 
 getCom();
@@ -60,18 +52,8 @@ buttonElement.addEventListener("click", () => {
     textElement.value = "";
     return getCom();
   })
-  .catch((error) => {
-    if (error.message === "Сервер упал") {
-      alert("Нет интернета");
-    }
-    if (error.message === "Вводимые данные слишком короткие") {
-      alert("Имя или текст менее трех символов");
-    }
-    if (error.message === "Failed to fetch") {
-      alert("Кажется что-то пошло не так, попробуй позже..");
-    };
-  })
   .finally(() => loader.textContent = '');
+
 });
 
 renderCommentators();
