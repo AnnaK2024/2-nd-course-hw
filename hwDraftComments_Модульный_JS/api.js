@@ -27,6 +27,7 @@ export function getPost ({name, text}) {
      body: JSON.stringify ({
        name: name,
        text: text,
+       forseError: true,
      }),
   })
   .then((response) => {

@@ -19,7 +19,7 @@ function getCom() {
         comment: comment.text,
         likes: comment.likes,
         isLiked: comment.isLiked,
-        forceError: true,
+        forseError: true,
       };
     });
 
@@ -36,7 +36,7 @@ getCom();
 
 buttonElement.addEventListener("click", () => {
 
-  if (checkingForEmptyLines() === false) {
+  if (checkingForEmptyLines() === true) {
     return;
   };
 
