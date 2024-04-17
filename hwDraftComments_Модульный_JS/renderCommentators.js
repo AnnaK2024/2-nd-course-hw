@@ -1,5 +1,5 @@
 import { answerComment, editEventListeners, initEventListeners } from "./eventListeners.js";
-import { sanitizeHtml } from "./validation.js";
+import { sanitizeHtml } from "./assistants.js";
 
 const listElement = document.getElementById ('list');
 

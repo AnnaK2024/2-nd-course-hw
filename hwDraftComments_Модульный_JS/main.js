@@ -1,7 +1,6 @@
 import { getComments, getPost } from "./api.js";
 import { currentDate } from "./assistants.js";
 import { setComments, renderCommentators } from "./renderCommentators.js";
-import { checkingForEmptyLines } from "./validation.js";
 
 const nameElement = document.getElementById ('name-input');
 const textElement = document.getElementById ('text-input');
@@ -36,7 +35,15 @@ getCom();
 
 buttonElement.addEventListener("click", () => {
 
-  if (checkingForEmptyLines() === true) {
+  nameElement.classList.remove("error");
+  textElement.classList.remove("error");
+  
+  if (nameElement.value.trim() === "") {
+    nameElement.classList.add("error");
+    return;
+  }  
+  if (textElement.value.trim() === "") {
+    textElement.classList.add("error");
     return;
   };
 
@@ -52,8 +59,21 @@ buttonElement.addEventListener("click", () => {
     textElement.value = "";
     return getCom();
   })
-  .finally(() => loader.textContent = '');
-
+  .catch((error) => {
+    if (error.message === "Сервер упал") {
+      alert("Нет интернета");
+    }
+    if (error.message === "Вводимые данные слишком короткие") {
+      alert("Имя или текст менее трех символов");
+    }
+    if (error.message === "Failed to fetch") {
+      alert("Кажется что-то пошло не так, попробуй позже..");
+    };
+  })
+  .finally(() => {
+    addForm.classList.remove("hidden");
+    loader.textContent = "";
+  });
 });
 
 renderCommentators();
