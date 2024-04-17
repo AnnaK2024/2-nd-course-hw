@@ -82,7 +82,7 @@ export const renderCommentators = () => {
     });
   } else {
     addNewComment (); 
-  }
+  };
   
   initEventListeners();
   editEventListeners();

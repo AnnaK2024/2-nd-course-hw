@@ -126,7 +126,7 @@ export function addNewComment () {
      loader.textContent = "";
     });
   
-  // renderCommentators();
+      // renderCommentators();
   });
 };
 // добавление нового комментария по нажатию на Enter
