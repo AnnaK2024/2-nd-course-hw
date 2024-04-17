@@ -22,11 +22,11 @@ function getCom() {
       };
     });
 
-   setComments(appComments);
-   renderCommentators();
-   loader.textContent = '';
-   addForm.classList.remove("hidden");
-   preloader.classList.add('preloader-hidden');
+    setComments(appComments);
+    renderCommentators();
+    loader.textContent = '';
+    addForm.classList.remove("hidden");
+    preloader.classList.add('preloader-hidden');
 
   })
 };
