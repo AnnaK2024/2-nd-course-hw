@@ -1,5 +1,7 @@
-import { answerComment, editEventListeners, initEventListeners } from "./eventListeners.js";
+import { addNewComment, answerComment, editEventListeners, initEventListeners } from "./eventListeners.js";
 import { sanitizeHtml } from "./assistants.js";
+import { token, userName } from "./api.js";
+import { renderLogin } from "./renderLogin.js";
 
 export let сommentators = [];
 
@@ -31,34 +33,56 @@ export const renderCommentators = () => {
   })
   .join("");
 
-  const appHtml = `
-  <ul id="list" class="comments">${commentatorsHtml}
-    <!-- Список ренедрится из JS -->
-  </ul>
- <div class="add-form" id="form">
-  <input 
-    type="text" 
-    class="input-form"
-    placeholder="Введите ваше имя"
-    id="name-input"
-  />
-  <textarea 
-    type="textarea" 
-    class="text-area-form"
-    placeholder="Введите ваш коментарий"
-    rows="4"
-    id="text-input"
-  ></textarea>
-  <div class="add-form-row">
-    <button class="add-form-button" id="add-button">Написать</button>
-  </div>
-  <div>
-    <button class="button-delete" id="deleteComment">Удалить последний комментарий</button>
-  </div>
- </div>
- `;
+  let appHtml = '';
 
-  appElement.innerHTML = appHtml;
+  if (token) {
+
+   appHtml = `
+   <div class="add-form" id="form">
+    <input 
+      type="text" 
+      class="input-form"
+      value=${userName} disabled id="name-input" readonly
+      id="name-input"
+    />
+    <textarea 
+      type="textarea" 
+      class="text-area-form"
+      placeholder="Введите ваш коментарий"
+      rows="4"
+      id="text-input"
+    ></textarea>
+    <div class="add-form-row">
+      <button class="add-form-button" id="add-button">Написать</button>
+    </div>
+    <div>
+      <button class="button-delete" id="deleteComment">Удалить последний комментарий</button>
+    </div>
+   </div>`;
+
+  } else {
+
+   appHtml = `
+   <div class="comments-block" id="comments-block"> 
+     <ul id="list" class="comments">
+       ${commentatorsHtml}
+     </ul>
+     <span class="auth-link-span" id="load-comment">Чтобы добавить комментарий,
+      <a href="#" id="log">авторизуйтесь</a>
+     </span>
+   <div/>`;
+  }
+
+  appElement.innerHTML = commentatorsHtml + appHtml;
+
+  if (!token) {
+    const logButtonElement = document.getElementById('log');
+    logButtonElement.addEventListener("click", () => {
+      renderLogin({getComments});
+    });
+  } else {
+    addNewComment (); 
+  }
   
   initEventListeners();
   editEventListeners();

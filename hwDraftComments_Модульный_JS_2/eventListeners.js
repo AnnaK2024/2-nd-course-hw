@@ -4,6 +4,7 @@ import { renderCommentators, сommentators } from "./renderCommentators.js";
 const buttonElement = document.getElementById ('add-button');
 const textElement = document.getElementById ('text-input');
 
+//Лайки
 export let initEventListeners = () => {
  const likeButtonElement = document.querySelectorAll(".like-button");
     for ( const likeButtonEl of likeButtonElement) {
@@ -39,7 +40,7 @@ export let initEventListeners = () => {
       })
    }
 }
-  
+// редактирование комментария  
 export function editEventListeners () {
     const editButtonElements = document.querySelectorAll(".edit-button"); 
     for ( const editButtonEl of editButtonElements) { 
@@ -62,11 +63,9 @@ export function editEventListeners () {
       });
     }
 };
-  
+//ответ на комментирий  
 export function answerComment () {
-        
     const commentsElements = document.querySelectorAll('.comment');
-  
     for (const commentsEl of commentsElements) { 
   
       commentsEl.addEventListener('click', (event) => {
@@ -80,8 +79,9 @@ export function answerComment () {
       })
     };
 };
-
-buttonElement.addEventListener("click", () => {
+// добавление нового комментария
+export function addNewComment () { 
+  buttonElement.addEventListener("click", () => {
 
   nameElement.classList.remove("error");
   textElement.classList.remove("error");
@@ -98,14 +98,16 @@ buttonElement.addEventListener("click", () => {
   addForm.classList.add("hidden");
   loader.textContent = 'Комментарий добавляется .....';
 
-  getPost ({
+  return getPost ({
     name: nameElement.value,
     text: textElement.value,
   })
   .then(() => {
+    return getCom();
+  })
+  .then(() => {
     nameElement.value = "";
     textElement.value = "";
-    return getCom();
   })
   .catch((error) => {
     if (error.message === "Сервер упал") {
@@ -119,20 +121,27 @@ buttonElement.addEventListener("click", () => {
     };
   })
   .finally(() => loader.textContent = '');
-});
+  });
 
-renderCommentators();
+  renderCommentators();
+};
 
+// добавление нового комментария по нажатию на Enter
 const formElement = document.getElementById ('form');
-formElement.addEventListener('keyup', keyEvent);
-function keyEvent(e) {
+if (formElement) {
+  formElement.addEventListener('keyup', keyEvent);
+  function keyEvent(e) {
     if (e.code === 'Enter') {
       buttonElement.dispatchEvent(new Event('click'));
     }
+  }
 };
-  
+
+// удаление последнего комментария  
 const removeButton = document.getElementById("deleteComment");
-removeButton.addEventListener("click", () => {
-   сommentators.pop();
-   renderCommentators();
-});
+if (removeButton) {
+  removeButton.addEventListener("click", () => {
+    сommentators.pop();
+    renderCommentators();
+ });
+};

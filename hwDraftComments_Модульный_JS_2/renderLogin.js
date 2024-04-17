@@ -1,4 +1,4 @@
-import { getLogin, setToken, token } from "./api.js";
+import { getLogin, setName, setToken, token } from "./api.js";
 
 export const renderLogin = ({getComments}) => {
     const appElement = document.getElementById("app");
@@ -18,29 +18,34 @@ export const renderLogin = ({getComments}) => {
       id="password-input"
     />
   <div class="add-form-row">
-      <button class="add-form-button" id="auth-button">Войти</button>
+    <button class="add-form-button" id="auth-button">Войти</button>
+  </div>
+  <div class="add-form-link">
+      <button class="add-form-button" id="auth-button-link">Зарегистрироваться</button>
   </div>
   `;
 
   appElement.innerHTML = loginHtml;
 
-  const enterButton = document.getElementById("auth-button");
+  const buttonLoginElement = document.getElementById("auth-button");
   const loginInputElement = document.getElementById("login-input");
   const passwordInputElement = document.getElementById("password-input");
 
-  enterButton.addEventListener ("click", () => {
-        getLogin({
-          login: loginInputElement.value,
-          password: passwordInputElement.value
-        })
-        .then((responsData) => {
-          console.log(token);
-          setToken(responsData.user.token);
-          console.log(token);
-        })
-        .then(() => {
-           getComments();
-        });
+  buttonLoginElement.addEventListener ("click", () => {
+    getLogin({
+      login: loginInputElement.value,
+       password: passwordInputElement.value
+    })
+    .then((responsData) => {
+      console.log(token);
+      setToken(responsData.user.token);
+      setName(responsData.user.userName);
+      console.log(token);
+      getComments();
     });
+    
+    loginInputElement.value = '';
+    passwordInputElement.value = '';
+  });
 };
 
