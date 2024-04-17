@@ -36,7 +36,6 @@ renderLogin({getComments});
 initEventListeners ({comments}, {renderCommentators});
 
 answerComment (comments);
-addEventListener ();
 
 console.log("It works!");
 

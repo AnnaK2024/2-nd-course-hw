@@ -83,49 +83,52 @@ export function answerComment () {
 export function addNewComment () { 
   buttonElement.addEventListener("click", () => {
 
-  nameElement.classList.remove("error");
-  textElement.classList.remove("error");
+   nameElement.classList.remove("error");
+   textElement.classList.remove("error");
   
-  if (nameElement.value.trim() === "") {
-    nameElement.classList.add("error");
-    return;
-  }  
-  if (textElement.value.trim() === "") {
-    textElement.classList.add("error");
-    return;
-  };
+   if (nameElement.value.trim() === "") {
+     nameElement.classList.add("error");
+     return;
+   }  
+   if (textElement.value.trim() === "") {
+     textElement.classList.add("error");
+     return;
+   };
 
-  addForm.classList.add("hidden");
-  loader.textContent = 'Комментарий добавляется .....';
+   addForm.classList.add("hidden");
+   loader.textContent = 'Комментарий добавляется .....';
 
-  return getPost ({
-    name: nameElement.value,
-    text: textElement.value,
-  })
-  .then(() => {
-    return getCom();
-  })
-  .then(() => {
-    nameElement.value = "";
-    textElement.value = "";
-  })
-  .catch((error) => {
-    if (error.message === "Сервер упал") {
-      alert("Нет интернета");
-    }
-    if (error.message === "Вводимые данные слишком короткие") {
-      alert("Имя или текст менее трех символов");
-    }
-    if (error.message === "Failed to fetch") {
-      alert("Кажется что-то пошло не так, попробуй позже..");
-    };
-  })
-  .finally(() => loader.textContent = '');
+   return getPost ({
+      name: nameElement.value,
+     text: textElement.value,
+   })
+   .then(() => {
+     return getCom();
+   })
+   .then(() => {
+     nameElement.value = "";
+     textElement.value = "";
+   })
+   .catch((error) => {
+     if (error.message === "Сервер упал") {
+       alert("Нет интернета");
+     }
+     if (error.message === "Вводимые данные слишком короткие") {
+       alert("Имя или текст менее трех символов");
+     }
+     if (error.message === "Failed to fetch") {
+       alert("Кажется что-то пошло не так, попробуй позже..");
+     }
+   })  
+   .finally (() => {
+     addForm.classList.remove("hidden");
+
+     loader.textContent = "";
+    });
+  
+  // renderCommentators();
   });
-
-  renderCommentators();
 };
-
 // добавление нового комментария по нажатию на Enter
 const formElement = document.getElementById ('form');
 if (formElement) {
