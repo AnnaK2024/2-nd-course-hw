@@ -1,7 +1,5 @@
 import { answerComment, editEventListeners, initEventListeners } from "./eventListeners.js";
-import { sanitizeHtml } from "./validation.js";
-
-const listElement = document.getElementById ('list');
+import { sanitizeHtml } from "./assistants.js";
 
 export let сommentators = [];
 
@@ -10,6 +8,7 @@ export function setComments (newComments) {
 };
 
 export const renderCommentators = () => {
+  const appElement = document.getElementById("app");
   const commentatorsHtml = сommentators.map((сommentator, index) => {
     return `<li class="comment" data-index="${index}">
       <div class="comment-header">
@@ -32,7 +31,34 @@ export const renderCommentators = () => {
   })
   .join("");
 
-  listElement.innerHTML = commentatorsHtml;
+  const appHtml = `
+  <ul id="list" class="comments">${commentatorsHtml}
+    <!-- Список ренедрится из JS -->
+  </ul>
+ <div class="add-form" id="form">
+  <input 
+    type="text" 
+    class="input-form"
+    placeholder="Введите ваше имя"
+    id="name-input"
+  />
+  <textarea 
+    type="textarea" 
+    class="text-area-form"
+    placeholder="Введите ваш коментарий"
+    rows="4"
+    id="text-input"
+  ></textarea>
+  <div class="add-form-row">
+    <button class="add-form-button" id="add-button">Написать</button>
+  </div>
+  <div>
+    <button class="button-delete" id="deleteComment">Удалить последний комментарий</button>
+  </div>
+ </div>
+ `;
+
+  appElement.innerHTML = appHtml;
   
   initEventListeners();
   editEventListeners();

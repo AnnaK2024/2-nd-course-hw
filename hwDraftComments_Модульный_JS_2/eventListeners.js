@@ -81,6 +81,48 @@ export function answerComment () {
     };
 };
 
+buttonElement.addEventListener("click", () => {
+
+  nameElement.classList.remove("error");
+  textElement.classList.remove("error");
+  
+  if (nameElement.value.trim() === "") {
+    nameElement.classList.add("error");
+    return;
+  }  
+  if (textElement.value.trim() === "") {
+    textElement.classList.add("error");
+    return;
+  };
+
+  addForm.classList.add("hidden");
+  loader.textContent = 'Комментарий добавляется .....';
+
+  getPost ({
+    name: nameElement.value,
+    text: textElement.value,
+  })
+  .then(() => {
+    nameElement.value = "";
+    textElement.value = "";
+    return getCom();
+  })
+  .catch((error) => {
+    if (error.message === "Сервер упал") {
+      alert("Нет интернета");
+    }
+    if (error.message === "Вводимые данные слишком короткие") {
+      alert("Имя или текст менее трех символов");
+    }
+    if (error.message === "Failed to fetch") {
+      alert("Кажется что-то пошло не так, попробуй позже..");
+    };
+  })
+  .finally(() => loader.textContent = '');
+});
+
+renderCommentators();
+
 const formElement = document.getElementById ('form');
 formElement.addEventListener('keyup', keyEvent);
 function keyEvent(e) {
@@ -94,4 +136,3 @@ removeButton.addEventListener("click", () => {
    сommentators.pop();
    renderCommentators();
 });
-  

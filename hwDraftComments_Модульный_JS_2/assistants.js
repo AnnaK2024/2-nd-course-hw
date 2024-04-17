@@ -1,4 +1,5 @@
 export const currentDate = (date) => {
+  
  let dateTime = new Date(date);
 
  const day = String(dateTime.getDate()).padStart(2, '0');
@@ -16,6 +17,16 @@ export function delay(interval = 300) {
         resolve();
       }, interval);
     });
+};
+
+export const sanitizeHtml = (htmlString) => {
+  return htmlString
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;")
+  .replaceAll("QUOTE_BEGIN", "<div class='quote'>")
+  .replaceAll("QUOTE_END", "</div>")
 };
 
 

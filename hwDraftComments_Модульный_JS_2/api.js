@@ -1,6 +1,11 @@
 const host = "https://wedev-api.sky.pro/api/v2/:anna-kalina/comments";
+const userUrl = "https://wedev-api.sky.pro/api/user/login";
 export let token = "";
 export let userName = "";
+
+export const setToken = (newToken) => {
+  token = newToken;
+};
 
 export function getComments () {
  return fetch(host, {
@@ -35,6 +40,22 @@ export function getPost ({name, text}) {
     if (response.status === 400) {
       throw new Error("Вводимые данные слишком короткие");
     }  
+    return response.json();
+  })
+};
+
+export function getLogin (login, password) {
+  return fetch(userUrl, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer${token}`,
+    },
+    body: JSON.stringify ({
+      login,
+      password,
+    }),
+  })
+  .then((response) => {
     return response.json();
   })
 };
