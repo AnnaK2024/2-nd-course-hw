@@ -1,4 +1,4 @@
-import { login, setToken, token } from "./api.js";
+import { login, setName, setToken, token } from "./api.js";
 
 export const renderLogin = ({fetchAndRenderTasks}) => {
     const appElement = document.getElementById("app");
@@ -33,6 +33,7 @@ export const renderLogin = ({fetchAndRenderTasks}) => {
         }).then((responsData) => {
          console.log(token);
          setToken(responsData.user.token);
+         setName(responsData.user.userName);
          console.log(token);
         }).then(() => {
             fetchAndRenderTasks();

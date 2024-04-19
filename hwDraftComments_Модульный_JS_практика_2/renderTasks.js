@@ -1,5 +1,6 @@
 import {sanitizeHtml} from "./sanitizeHtml.js";
-import { deleteTodo, postTodo } from "./api.js";
+import { deleteTodo, postTodo, userName} from "./api.js";
+
 
 export const renderTasks = (tasks, fetchAndRenderTasks) => {
   const appElement = document.getElementById("app");
@@ -22,8 +23,8 @@ export const renderTasks = (tasks, fetchAndRenderTasks) => {
       <br />
       <!— Должна появиться после входа —>
       <div class="form">
+        <p class="form-name">Имя пользователя: = ${userName}</p>
         <h3 class="form-title">Форма добавления</h3>
-        <p class="form-name">Имя пользователя:</p>
         <div class="form-row">
           Что нужно сделать:
           <input

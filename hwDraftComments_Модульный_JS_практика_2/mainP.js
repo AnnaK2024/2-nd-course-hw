@@ -4,6 +4,7 @@ import { renderTasks } from "./renderTasks.js";
 
 let tasks = [];
 
+
 const fetchAndRenderTasks = () => {
   getTodos().then((responseData) => {
     tasks = responseData.todos;
