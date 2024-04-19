@@ -1,9 +1,9 @@
-import { getLogin, setName, setToken, token } from "./api.js";
+import { getLogin, setName, setToken } from "./api.js";
 
 export const renderLogin = ({getComments}) => {
     const appElement = document.getElementById("app");
-    const loginHtml = `
-    <div class="auth-form" id="authFform">
+    const loginHtml =
+    `<div class="auth-form" id="authFform">
     <input 
       type="text" 
       class="input-form"
@@ -22,8 +22,7 @@ export const renderLogin = ({getComments}) => {
   </div>
   <div class="add-form-link">
       <button class="add-form-button" id="auth-button-link">Зарегистрироваться</button>
-  </div>
-  `;
+  </div>`;
 
   appElement.innerHTML = loginHtml;
 
@@ -37,15 +36,17 @@ export const renderLogin = ({getComments}) => {
        password: passwordInputElement.value
     })
     .then((responsData) => {
-      console.log(token);
       setToken(responsData.user.token);
       setName(responsData.user.userName);
-      console.log(token);
-      getComments();
+      getComents();
     });
-    
+
     loginInputElement.value = '';
     passwordInputElement.value = '';
   });
 };
 
+// const authButton = document.querySelector(".auth-button");
+// authButton.addEventListener('click', () => {
+//     renderLoginForm();
+// });

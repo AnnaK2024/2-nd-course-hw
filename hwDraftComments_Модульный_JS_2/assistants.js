@@ -11,6 +11,14 @@ export const currentDate = (date) => {
  return `${day}.${month}.${year} ${hours}:${minutes}`;
 };
 
+// window.onload = function() {
+//   let preloader = document.getElementById('preloader');
+// };
+
+
+
+    // <div class="loader"></div>
+    
 export function delay(interval = 300) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -28,6 +36,7 @@ export const sanitizeHtml = (htmlString) => {
   .replaceAll("QUOTE_BEGIN", "<div class='quote'>")
   .replaceAll("QUOTE_END", "</div>")
 };
+
 
 
 

@@ -1,8 +1,8 @@
 import { delay } from "./assistants.js";
 import { renderCommentators, сommentators } from "./renderCommentators.js";
 
-const buttonElement = document.getElementById ('add-button');
-const textElement = document.getElementById ('text-input');
+
+
 
 //Лайки
 export let initEventListeners = () => {
@@ -40,6 +40,7 @@ export let initEventListeners = () => {
       })
    }
 }
+
 // редактирование комментария  
 export function editEventListeners () {
     const editButtonElements = document.querySelectorAll(".edit-button"); 
@@ -63,6 +64,7 @@ export function editEventListeners () {
       });
     }
 };
+
 //ответ на комментирий  
 export function answerComment () {
     const commentsElements = document.querySelectorAll('.comment');
@@ -72,6 +74,8 @@ export function answerComment () {
         event.stopPropagation();
   
          const index = commentsEl .dataset.index;
+
+         if (сommentators[index].isEdit) return;
       
          textElement.value = `QUOTE_BEGIN${сommentators[index].comment}\n${сommentators[index].name}QUOTE_END`;
   
@@ -79,8 +83,15 @@ export function answerComment () {
       })
     };
 };
+
 // добавление нового комментария
 export function addNewComment () { 
+
+  const buttonElement = document.getElementById ('add-button');
+  const textElement = document.getElementById ('text-input');
+  const addForm = document.getElementById("form");
+  const loader = document.querySelector(".loader");
+
   buttonElement.addEventListener("click", () => {
 
    nameElement.classList.remove("error");
@@ -99,7 +110,7 @@ export function addNewComment () {
    loader.textContent = 'Комментарий добавляется .....';
 
    return getPost ({
-      name: nameElement.value,
+     name: nameElement.value,
      text: textElement.value,
    })
    .then(() => {
@@ -121,14 +132,16 @@ export function addNewComment () {
      }
    })  
    .finally (() => {
-     addForm.classList.remove("hidden");
 
+     console.warn(error);
+     addForm.classList.remove("hidden");
      loader.textContent = "";
+     
     });
   
-      // renderCommentators();
   });
 };
+
 // добавление нового комментария по нажатию на Enter
 const formElement = document.getElementById ('form');
 if (formElement) {

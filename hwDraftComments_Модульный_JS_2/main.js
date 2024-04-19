@@ -1,8 +1,8 @@
 import { getComments} from "./api.js";
-import { currentDate } from "./assistants.js";
-import { renderLogin } from "./renderLogin.js";
-import { setComments, renderCommentators } from "./renderCommentators.js";
+import { currentDate, delay } from "./assistants.js";
 import { answerComment, initEventListeners } from "./eventListeners.js";
+import { setComments, renderCommentators, сommentators } from "./renderCommentators.js";
+import { renderLogin } from "./renderLogin.js";
 
 const addForm = document.getElementById("form");
 const loader = document.querySelector(".loader");
@@ -20,22 +20,20 @@ function getCom() {
     });
 
    setComments(appComments);
-   renderCommentators();
-   loader.textContent = '';
-   addForm.classList.remove("hidden");
+   renderCommentators({сommentators, initEventListeners, answerComment, delay});
+  //  loader.textContent = '';
+  //  addForm.classList.remove("hidden");
    preloader.classList.add('preloader-hidden');
 
   })
-
 };
-
 getCom();
 
 renderLogin({getComments});
 
-initEventListeners ({comments}, {renderCommentators});
+initEventListeners ({сommentators}, {renderCommentators});
 
-answerComment (comments);
+answerComment (сommentators);
 
 console.log("It works!");
 

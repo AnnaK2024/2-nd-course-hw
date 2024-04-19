@@ -1,6 +1,6 @@
 import { addNewComment, answerComment, editEventListeners, initEventListeners } from "./eventListeners.js";
 import { sanitizeHtml } from "./assistants.js";
-import { token, userName } from "./api.js";
+import { getComments, token, userName } from "./api.js";
 import { renderLogin } from "./renderLogin.js";
 
 export let сommentators = [];
@@ -35,9 +35,11 @@ export const renderCommentators = () => {
 
   let appHtml = '';
 
+  // если токен есть
   if (token) {
 
-   appHtml = `
+   // форма добавления нового комментария 
+   appHtml = ` 
    <div class="add-form" id="form">
     <input 
       type="text" 
@@ -62,26 +64,28 @@ export const renderCommentators = () => {
 
   } else {
 
+   // ссылка на авторизацию
    appHtml = `
    <div class="comments-block" id="comments-block"> 
      <ul id="list" class="comments">
        ${commentatorsHtml}
      </ul>
-     <span class="auth-link-span" id="load-comment">Чтобы добавить комментарий,
-      <a href="#" id="log">авторизуйтесь</a>
-     </span>
-   <div/>`;
+   <div/>
+   <div class="auth-info" id="load-comment">Чтобы добавить комментарий,
+    <a class="auth-link" href="#" id="log">авторизуйтесь</a>
+   </div>`;
   }
 
-  appElement.innerHTML = commentatorsHtml + appHtml;
+  appElement.innerHTML = commentatorsHtml + appHtml; // если есть токен - список комментариев + appHtml - либо форма добавления комментария, либо поле авторизации
 
+  // токена нет
   if (!token) {
-    const logButtonElement = document.getElementById('log');
+    const logButtonElement = document.getElementById('log'); // переход по ссылке авторизации
     logButtonElement.addEventListener("click", () => {
-      renderLogin({getComments});
+      renderLogin(getComments);
     });
   } else {
-    addNewComment (); 
+    addNewComment (renderCommentators); // добавление нового комментария
   };
   
   initEventListeners();
