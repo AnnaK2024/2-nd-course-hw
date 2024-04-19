@@ -1,5 +1,5 @@
-const host = "https://wedev-api.sky.pro/api/v2/:anna-kalina/comments";
-const userUrl = "https://wedev-api.sky.pro/api/user/login";
+const host = 'https://wedev-api.sky.pro/api/v2/:anna-kalina/comments';
+const userUrl = 'https://wedev-api.sky.pro/api/user/login';
 
 export let token = "";
 export let userName = "";

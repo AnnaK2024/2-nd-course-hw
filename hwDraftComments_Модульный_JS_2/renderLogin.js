@@ -21,7 +21,7 @@ export const renderLogin = ({getComments}) => {
     <button class="add-form-button" id="auth-button">Войти</button>
   </div>
   <div class="add-form-link">
-      <button class="add-form-button" id="auth-button-link">Зарегистрироваться</button>
+    <a href="#" class="register-button" id="auth-button-link">Зарегистрироваться</a>
   </div>`;
 
   appElement.innerHTML = loginHtml;
@@ -38,7 +38,7 @@ export const renderLogin = ({getComments}) => {
     .then((responsData) => {
       setToken(responsData.user.token);
       setName(responsData.user.userName);
-      getComents();
+      getComments();
     });
 
     loginInputElement.value = '';
