@@ -1,13 +1,13 @@
 import {sanitizeHtml} from "./sanitizeHtml.js";
 import { deleteTodo, postTodo } from "./api.js";
-import { formatDateToRu, formatDateToUs } from "./lib/formatDate/formatDate.js";
+import { format } from "date-fns";
 
 
 export const renderTasks = (tasks, fetchAndRenderTasks) => {
   const appElement = document.getElementById("app");
-  const country = "ru";
     const tasksHtml = tasks
       .map((task) => {
+        const createDate = format(new Date(task.created_at), 'dd/MM/yyyy hh:mm');
         return `
         <li class="task">
           <p class="task-text">
@@ -15,7 +15,7 @@ export const renderTasks = (tasks, fetchAndRenderTasks) => {
             <button data-id="${task.id}"
             class="button delete-button">Удалить</button>
           </p>
-          <p><i>Задача создана: ${country === "ru" ? formatDateToRu(new Date(task.created_at)) : formatDateToUs(new Date(task.created_at))}</i></p>
+          <p><i>Задача создана: ${createDate}</i></p>
         </li>`;
       })
       .join("");
