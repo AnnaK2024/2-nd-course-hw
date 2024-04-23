@@ -2,11 +2,12 @@ import { getComments} from "./api.js";
 import { currentDate, delay } from "./assistants.js";
 import { answerComment, initEventListeners } from "./eventListeners.js";
 import { setComments, renderCommentators, сommentators } from "./renderCommentators.js";
-import { renderLogin } from "./renderLogin.js";
+import { renderLogin } from "./renderForm.js";
 
-const addForm = document.getElementById("form");
-const loader = document.querySelector(".loader");
+// const addForm = document.getElementById("form");
+// const loader = document.querySelector(".loader");
 
+// форма добавления нового комментария
 function getCom() {
   getComments().then((responseData) => {
     let appComments = responseData.comments.map((comment) => {

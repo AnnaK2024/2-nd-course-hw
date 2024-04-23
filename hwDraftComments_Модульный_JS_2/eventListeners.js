@@ -1,9 +1,6 @@
 import { delay } from "./assistants.js";
 import { renderCommentators, сommentators } from "./renderCommentators.js";
 
-
-
-
 //Лайки
 export let initEventListeners = () => {
  const likeButtonElement = document.querySelectorAll(".like-button");
@@ -89,6 +86,7 @@ export function addNewComment () {
 
   const buttonElement = document.getElementById ('add-button');
   const textElement = document.getElementById ('text-input');
+  const nameElement = document.getElementById ('name-input');
   const addForm = document.getElementById("form");
   const loader = document.querySelector(".loader");
 

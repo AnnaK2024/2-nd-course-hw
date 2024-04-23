@@ -15,9 +15,7 @@ export const currentDate = (date) => {
 //   let preloader = document.getElementById('preloader');
 // };
 
-
-
-    // <div class="loader"></div>
+// <div class="loader"></div>
     
 export function delay(interval = 300) {
     return new Promise((resolve) => {

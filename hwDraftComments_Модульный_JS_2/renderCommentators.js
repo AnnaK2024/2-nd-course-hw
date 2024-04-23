@@ -1,7 +1,7 @@
 import { addNewComment, answerComment, editEventListeners, initEventListeners } from "./eventListeners.js";
 import { sanitizeHtml } from "./assistants.js";
 import { getComments, token, userName } from "./api.js";
-import { renderLogin } from "./renderLogin.js";
+import { renderLogin } from "./renderForm.js";
 
 export let сommentators = [];
 
@@ -9,6 +9,7 @@ export function setComments (newComments) {
   сommentators = newComments;
 };
 
+// отрисовка списка комментариев
 export const renderCommentators = () => {
   const appElement = document.getElementById("app");
   const commentatorsHtml = сommentators.map((сommentator, index) => {
@@ -68,7 +69,6 @@ export const renderCommentators = () => {
    appHtml = `
    <div class="comments-block" id="comments-block"> 
      <ul id="list" class="comments">
-       ${commentatorsHtml}
      </ul>
    <div/>
    <div class="auth-info" id="load-comment">Чтобы добавить комментарий,
@@ -76,7 +76,7 @@ export const renderCommentators = () => {
    </div>`;
   }
 
-  appElement.innerHTML = commentatorsHtml + appHtml; // если есть токен - список комментариев + appHtml - либо форма добавления комментария, либо поле авторизации
+  appElement.innerHTML = commentatorsHtml + appHtml; // если есть токен - список комментариев + appHtml (либо форма добавления комментария, либо поле авторизации)
 
   // токена нет
   if (!token) {
@@ -85,7 +85,7 @@ export const renderCommentators = () => {
       renderLogin(getComments);
     });
   } else {
-    addNewComment (); // добавление нового комментария
+    addNewComment (renderCommentators); // добавление нового комментария
   };
   
   initEventListeners();
