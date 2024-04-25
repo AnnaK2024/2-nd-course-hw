@@ -34,7 +34,7 @@ export const renderCommentators = () => {
   })
   .join("");
 
-  let appHtml = '';
+  let appHtml = ''; // отображение формы в зависимости от наличия токена
 
   // если токен есть
   if (token) {

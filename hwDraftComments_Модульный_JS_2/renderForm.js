@@ -23,7 +23,7 @@ export const renderLogin = () => {
       <button class="add-form-button" id="auth-button">Войти</button>
      </div>
      <div class="add-form-link">
-      <a class="add-form-button" href="#" id="auth-button-link">Зарегистрироваться</a>
+      <button class="add-form-button" id="auth-button-link">Зарегистрироваться</button>
     </div>`;
 
   appElement.innerHTML = loginHtml;
@@ -48,20 +48,19 @@ export const renderLogin = () => {
     passwordInputElement.value = '';
   });
 
-    // кнопка Зарегистрироваться
-  const regButton = document.querySelector('auth-button-link');
-    regButton.addEventListener('click', () => {
-      renderRegistr();
-    });
+  // кнопка Зарегистрироваться
+  const regButton = document.getElementById("auth-button-link");
+  regButton.addEventListener('click', () => {
+    renderRegistr();
+  });
 };
-
 
 
 // отрисовка формы регистрации нового пользователя
 export const renderRegistr = () => {
-  const appRegElement = document.querySelector("app");
+  const appRegElement = document.getElementById("app");
   const registrHtml =
-   `<div class="add-form" id="regForm">
+    `<div class="add-form" id="regForm">
      <input
         type="text" 
         class="input-form auth-input-form"
