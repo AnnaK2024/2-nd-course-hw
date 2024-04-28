@@ -85,7 +85,6 @@ export const renderRegistr = () => {
       <div class="add-form-row">
         <button class="add-form-button" id="regButton">Зарегестрироваться</button>
       </div>
-      <button class="auth-button">Войти</button>
     </div>`;
 
   appRegElement.innerHTML = registrHtml;
@@ -117,11 +116,6 @@ export const renderRegistr = () => {
           };
         console.warn(error);
       });
-  });
-  // кнопка Войти
-  const authButton = document.querySelector(".auth-button");
-  authButton.addEventListener('click', () => {
-    renderLogin();
   });
 };
 
