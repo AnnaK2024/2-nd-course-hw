@@ -1,3 +1,4 @@
+import { getPost } from "./api.js";
 import { delay } from "./assistants.js";
 import { renderCommentators, сommentators } from "./renderCommentators.js";
 
@@ -87,7 +88,7 @@ export function addNewComment () {
   const buttonElement = document.getElementById ('add-button');
   const textElement = document.getElementById ('text-input');
   const nameElement = document.getElementById ('name-input');
-  const addForm = document.getElementById("form");
+  const addForm = document.getElementById('form');
   const loader = document.querySelector(".loader");
 
   buttonElement.addEventListener("click", () => {
@@ -131,7 +132,6 @@ export function addNewComment () {
    })  
    .finally (() => {
 
-     console.warn(error);
      addForm.classList.remove("hidden");
      loader.textContent = "";
      

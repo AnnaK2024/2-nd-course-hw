@@ -43,7 +43,7 @@ export function getPost ({name, text}) {
        text: text,
      }),
      headers: {
-      Authorization: `Bearer${token}`,
+      Authorization: `Bearer ${token}`,
      }
   })
   .then((response) => {

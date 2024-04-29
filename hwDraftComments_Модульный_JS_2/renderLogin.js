@@ -37,7 +37,7 @@ export const renderLogin = ({getComments}) => {
     })
     .then((responsData) => {
       setToken(responsData.user.token);
-      setName(responsData.user.userName);
+      setName(responsData.user.name);
       getComments();
     });
 
