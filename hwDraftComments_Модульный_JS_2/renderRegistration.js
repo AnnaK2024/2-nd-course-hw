@@ -48,7 +48,7 @@ export const renderRegistration = ({getComments}) => {
         .then((responseData) => {
             console.log(token);
             setToken(responseData.user.token);
-            setName(responseData.user.userName);
+            setName(responseData.user.login);
             getComments();
             console.log(token);
         })

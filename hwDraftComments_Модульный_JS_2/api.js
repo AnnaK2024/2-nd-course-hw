@@ -83,3 +83,11 @@ export function getRegistr({name, login, password}) {
     return response.json();
   })
 };
+
+// export function deleteComment({ id }) {
+//   return fetch(userReg + id, {
+//      method: "DELETE",
+//   }).then((response) => {
+//      return response.json();
+//   });
+// };

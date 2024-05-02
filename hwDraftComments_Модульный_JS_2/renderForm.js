@@ -40,7 +40,7 @@ export const renderLogin = () => {
     })
     .then((responsData) => {
       setToken(responsData.user.token);
-      setName(responsData.user.setName);
+      setName(responsData.user.login);
       renderCommentators();
     });
     

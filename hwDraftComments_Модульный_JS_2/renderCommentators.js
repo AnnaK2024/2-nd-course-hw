@@ -85,7 +85,7 @@ export const renderCommentators = () => {
       renderLogin(getComments);
     });
   } else {
-    addNewComment (renderCommentators); // добавление нового комментария
+    addNewComment (); // добавление нового комментария
   };
   
   initEventListeners();

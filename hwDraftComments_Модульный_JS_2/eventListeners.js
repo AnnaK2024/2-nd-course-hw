@@ -2,6 +2,63 @@ import { getComments, getPost } from "./api.js";
 import { delay } from "./assistants.js";
 import { renderCommentators, сommentators } from "./renderCommentators.js";
 
+// добавление нового комментария
+export function addNewComment () { 
+
+  const buttonElement = document.getElementById ('add-button');
+  const textElement = document.getElementById ('text-input');
+  const nameElement = document.getElementById ('name-input');
+  const addForm = document.getElementById('form');
+  const loader = document.querySelector("#preloader");
+
+  buttonElement.addEventListener("click", () => {
+
+   nameElement.classList.remove("error");
+   textElement.classList.remove("error");
+  
+   if (nameElement.value.trim() === "") {
+     nameElement.classList.add("error");
+     return;
+   }  
+   if (textElement.value.trim() === "") {
+     textElement.classList.add("error");
+     return;
+   };
+
+   addForm.classList.add("hidden");
+   loader.textContent = 'Комментарий добавляется .....';
+
+   return getPost ({
+     name: nameElement.value,
+     text: textElement.value,
+   })
+   .then(() => {
+     return getCom();
+   })
+   .then(() => {
+     nameElement.value = "";
+     textElement.value = "";
+   })
+   .catch((error) => {
+     if (error.message === "Сервер упал") {
+       alert("Нет интернета");
+     }
+     if (error.message === "Вводимые данные слишком короткие") {
+       alert("Имя или текст менее трех символов");
+     }
+     if (error.message === "Failed to fetch") {
+       alert("Кажется что-то пошло не так, попробуй позже..");
+     }
+   })  
+   .finally (() => {
+      addForm.classList.remove("hidden");
+      loader.textContent = "";
+    });
+  
+  });
+};
+
+
 //Лайки
 export let initEventListeners = () => {
  const likeButtonElement = document.querySelectorAll(".like-button");
@@ -66,6 +123,8 @@ export function editEventListeners () {
 //ответ на комментирий  
 export function answerComment () {
     const commentsElements = document.querySelectorAll('.comment');
+    const textElement = document.getElementById ('text-input');
+    
     for (const commentsEl of commentsElements) { 
   
       commentsEl.addEventListener('click', (event) => {
@@ -82,64 +141,6 @@ export function answerComment () {
     };
 };
 
-// добавление нового комментария
-export function addNewComment () { 
-
-  const buttonElement = document.getElementById ('add-button');
-  const textElement = document.getElementById ('text-input');
-  const nameElement = document.getElementById ('name-input');
-  const addForm = document.getElementById('form');
-  const loader = document.querySelector("#preloader");
-
-  buttonElement.addEventListener("click", () => {
-
-   nameElement.classList.remove("error");
-   textElement.classList.remove("error");
-  
-   if (nameElement.value.trim() === "") {
-     nameElement.classList.add("error");
-     return;
-   }  
-   if (textElement.value.trim() === "") {
-     textElement.classList.add("error");
-     return;
-   };
-
-   addForm.classList.add("hidden");
-   loader.textContent = 'Комментарий добавляется .....';
-
-   return getPost ({
-     name: nameElement.value,
-     text: textElement.value,
-   })
-   .then(() => {
-     return getCom();
-   })
-   .then(() => {
-     nameElement.value = "";
-     textElement.value = "";
-   })
-   .catch((error) => {
-     if (error.message === "Сервер упал") {
-       alert("Нет интернета");
-     }
-     if (error.message === "Вводимые данные слишком короткие") {
-       alert("Имя или текст менее трех символов");
-     }
-     if (error.message === "Failed to fetch") {
-       alert("Кажется что-то пошло не так, попробуй позже..");
-     }
-   })  
-   .finally (() => {
-
-     addForm.classList.remove("hidden");
-     loader.textContent = "";
-     
-    });
-  
-  });
-  getComments();
-};
 
 // добавление нового комментария по нажатию на Enter
 const formElement = document.getElementById ('form');
