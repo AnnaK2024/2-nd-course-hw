@@ -4,9 +4,6 @@ import { answerComment, initEventListeners } from "./eventListeners.js";
 import { setComments, renderCommentators, сommentators } from "./renderCommentators.js";
 import { renderLogin } from "./renderForm.js";
 
-// const addForm = document.getElementById("form");
-// const loader = document.querySelector(".loader");
-
 // форма добавления нового комментария
 function getCom() {
   getComments().then((responseData) => {
@@ -22,10 +19,7 @@ function getCom() {
 
    setComments(appComments);
    renderCommentators({сommentators, initEventListeners, answerComment, delay});
-  //  loader.textContent = '';
-  //  addForm.classList.remove("hidden");
    preloader.classList.add('preloader-hidden');
-
   })
 };
 getCom();

@@ -1,4 +1,4 @@
-import { getPost } from "./api.js";
+import { getComments, getPost } from "./api.js";
 import { delay } from "./assistants.js";
 import { renderCommentators, сommentators } from "./renderCommentators.js";
 
@@ -89,7 +89,7 @@ export function addNewComment () {
   const textElement = document.getElementById ('text-input');
   const nameElement = document.getElementById ('name-input');
   const addForm = document.getElementById('form');
-  const loader = document.querySelector(".loader");
+  const loader = document.querySelector("#preloader");
 
   buttonElement.addEventListener("click", () => {
 
@@ -138,6 +138,7 @@ export function addNewComment () {
     });
   
   });
+  getComments();
 };
 
 // добавление нового комментария по нажатию на Enter
