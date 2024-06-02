@@ -1,6 +1,6 @@
-import { getComments, getPost } from "./api.js";
-import { delay } from "./assistants.js";
-import { renderCommentators, сommentators } from "./renderCommentators.js";
+import {getComments, getPost } from "./api.js";
+import { currentDate, delay } from "./assistants.js";
+import { renderCommentators, setComments, сommentators } from "./renderCommentators.js";
 
 // добавление нового комментария
 export function addNewComment () { 
@@ -28,17 +28,25 @@ export function addNewComment () {
    addForm.classList.add("hidden");
    loader.textContent = 'Комментарий добавляется .....';
 
-   return getPost ({
+   getPost ({
      name: nameElement.value,
      text: textElement.value,
    })
    .then(() => {
-     return getCom();
-   })
-   .then(() => {
-     nameElement.value = "";
-     textElement.value = "";
-   })
+     return getComments().then((responseData) => {
+      let appComments = responseData.comments.map((comment) => {
+        return {
+          name: comment.author.name,
+          date: currentDate(comment.date),
+          comment: comment.text,
+          likes: comment.likes,
+          isLiked: comment.isLiked,
+        };
+      });
+      setComments(appComments);
+      renderCommentators();
+     })
+    })
    .catch((error) => {
      if (error.message === "Сервер упал") {
        alert("Нет интернета");
@@ -54,10 +62,8 @@ export function addNewComment () {
       addForm.classList.remove("hidden");
       loader.textContent = "";
     });
-  
   });
 };
-
 
 //Лайки
 export let initEventListeners = () => {
