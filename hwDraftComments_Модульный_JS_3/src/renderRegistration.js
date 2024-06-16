@@ -1,7 +1,7 @@
 import { getRegistration, setToken } from "./api.js";
 import { renderLogin } from "./renderLogin.js";
 
-export const renderRegistration = ({getComments}) => {
+export const renderRegistration = ({ getComments }) => {
     const addRegForm = document.querySelector("app");
     const regFormHtml = `
     <div class="add-form" id="regForm">
@@ -39,38 +39,38 @@ export const renderRegistration = ({getComments}) => {
     const regLoginInputElement = document.getElementById("regInputLogin");
     const regPasswordInputElement = document.getElementById("regInputPassword");
 
-    regButtonElement.addEventListener('click', () => {
+    regButtonElement.addEventListener("click", () => {
         getRegistration({
             name: nameInputElement.value,
             login: loginInputElement.value,
             password: passwordInputElement.value,
         })
-        .then((responseData) => {
-            console.log(token);
-            setToken(responseData.user.token);
-            setName(responseData.user.login);
-            getComments();
-            console.log(token);
-        })
-        .catch((error) => {
-         if (error.message === 'Failed to fetch') {
-            alert("Кажется что-то пошло не так, попробуйте позже");
-         };
-         if (error.message === "Сервер упал") {
-            alert('Сервер сломался, попробуйте позже');
-         };
-         if (error.message === "Короткие вводимые данные") {
-            alert('Неверный логин или пароль.');
-         };
-          console.warn(error);
-        });
+            .then((responseData) => {
+                console.log(token);
+                setToken(responseData.user.token);
+                setName(responseData.user.login);
+                getComments();
+                console.log(token);
+            })
+            .catch((error) => {
+                if (error.message === "Failed to fetch") {
+                    alert("Кажется что-то пошло не так, попробуйте позже");
+                }
+                if (error.message === "Сервер упал") {
+                    alert("Сервер сломался, попробуйте позже");
+                }
+                if (error.message === "Короткие вводимые данные") {
+                    alert("Неверный логин или пароль.");
+                }
+                console.warn(error);
+            });
     });
     const authButton = document.querySelector(".auth-button");
-    authButton.addEventListener('click', () => {
+    authButton.addEventListener("click", () => {
         renderLogin();
     });
 
-    regNameInputElement.value = '';
-    regLoginInputElement.value = '';
-    regPasswordInputElement.value = '';
+    regNameInputElement.value = "";
+    regLoginInputElement.value = "";
+    regPasswordInputElement.value = "";
 };

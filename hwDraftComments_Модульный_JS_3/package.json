@@ -3,7 +3,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development --watch",
-    "start": "http-server -p 3004"
+    "start": "http-server -p 3004",
+    "format": "prettier --write ./src/",
+    "lint": "js": "eslint ./src/**/*.js"
   },
   "dependencies": {
     "date-fns": "^3.6.0",

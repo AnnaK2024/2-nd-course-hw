@@ -1,9 +1,8 @@
 import { getLogin, setName, setToken } from "./api.js";
 
-export const renderLogin = ({getComments}) => {
+export const renderLogin = ({ getComments }) => {
     const appElement = document.getElementById("app");
-    const loginHtml =
-    `<div class="auth-form" id="authFform">
+    const loginHtml = `<div class="auth-form" id="authFform">
     <input 
       type="text" 
       class="input-form"
@@ -24,26 +23,25 @@ export const renderLogin = ({getComments}) => {
       <button class="add-form-button" id="auth-button-link">Зарегистрироваться</button>
   </div>`;
 
-  appElement.innerHTML = loginHtml;
+    appElement.innerHTML = loginHtml;
 
-  const buttonLoginElement = document.getElementById("auth-button");
-  const loginInputElement = document.getElementById("login-input");
-  const passwordInputElement = document.getElementById("password-input");
+    const buttonLoginElement = document.getElementById("auth-button");
+    const loginInputElement = document.getElementById("login-input");
+    const passwordInputElement = document.getElementById("password-input");
 
-  buttonLoginElement.addEventListener ("click", () => {
-    getLogin({
-      login: loginInputElement.value,
-       password: passwordInputElement.value
-    })
-    .then((responsData) => {
-      setToken(responsData.user.token);
-      setName(responsData.user.name);
-      getComments();
+    buttonLoginElement.addEventListener("click", () => {
+        getLogin({
+            login: loginInputElement.value,
+            password: passwordInputElement.value,
+        }).then((responsData) => {
+            setToken(responsData.user.token);
+            setName(responsData.user.name);
+            getComments();
+        });
+
+        loginInputElement.value = "";
+        passwordInputElement.value = "";
     });
-
-    loginInputElement.value = '';
-    passwordInputElement.value = '';
-  });
 };
 
 // const authButton = document.querySelector(".auth-button");
