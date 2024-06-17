@@ -7,6 +7,7 @@ import {
 import { sanitizeHtml } from './assistants.js'
 import { getComments, token, userName } from './api.js'
 import { renderLogin } from './src/renderForm.js'
+import { format } from "date-fns";
 
 export let сommentators = []
 
@@ -19,10 +20,11 @@ export const renderCommentators = () => {
     const appElement = document.getElementById('app')
     const commentatorsHtml = сommentators
         .map((сommentator, index) => {
+            const createDate = format(new Date(task.created_at), 'dd/MM/yyyy hh:mm');
             return `<li class="comment" data-index="${index}">
       <div class="comment-header">
        <div>${sanitizeHtml(сommentator.name)}</div>
-       <div>${сommentator.date}</div>
+       <div>${createDate}</div>
       </div>
       <div class="comment-body">
        <div class="${сommentator.isEdit ? 'display-none' : 'comment-text'}">${sanitizeHtml(сommentator.comment)}</div>

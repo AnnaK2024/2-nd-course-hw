@@ -1,5 +1,5 @@
 import { getComments } from './api.js'
-import { currentDate, delay } from './assistants.js'
+import { delay } from './assistants.js'
 import { answerComment, initEventListeners } from './eventListeners.js'
 import {
     setComments,
@@ -14,7 +14,7 @@ function getCom() {
         let appComments = responseData.comments.map((comment) => {
             return {
                 name: comment.author.name,
-                date: currentDate(comment.date),
+                date: createDate(comment.date),
                 comment: comment.text,
                 likes: comment.likes,
                 isLiked: comment.isLiked,
