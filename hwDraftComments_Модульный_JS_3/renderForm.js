@@ -1,9 +1,9 @@
-import { getLogin, getRegistr, setName, setToken } from "./api.js";
-import { renderCommentators } from "../renderCommentators.js";
+import { getLogin, getRegistr, setName, setToken } from './api.js'
+import { renderCommentators } from '../renderCommentators.js'
 
 // отрисовка входа по логин/пароль(если уже зарегистрирован), либо регистрация нового пользователя
 export const renderLogin = () => {
-    const appElement = document.getElementById("app");
+    const appElement = document.getElementById('app')
     const loginHtml = `<div class="auth-form" id="authForm">
      <input 
       type="text" 
@@ -23,39 +23,39 @@ export const renderLogin = () => {
      </div>
      <div class="add-form-link">
       <button class="add-form-button" id="auth-button-link">Зарегистрироваться</button>
-    </div>`;
+    </div>`
 
-    appElement.innerHTML = loginHtml;
+    appElement.innerHTML = loginHtml
 
-    const loginInputElement = document.getElementById("login-input");
-    const passwordInputElement = document.getElementById("password-input");
-    const buttonLoginElement = document.getElementById("auth-button");
+    const loginInputElement = document.getElementById('login-input')
+    const passwordInputElement = document.getElementById('password-input')
+    const buttonLoginElement = document.getElementById('auth-button')
 
     // клик на кнопку Войти
-    buttonLoginElement.addEventListener("click", () => {
+    buttonLoginElement.addEventListener('click', () => {
         getLogin({
             login: loginInputElement.value,
             password: passwordInputElement.value,
         }).then((responsData) => {
-            setToken(responsData.user.token);
-            setName(responsData.user.login);
-            renderCommentators();
-        });
+            setToken(responsData.user.token)
+            setName(responsData.user.login)
+            renderCommentators()
+        })
 
-        loginInputElement.value = "";
-        passwordInputElement.value = "";
-    });
+        loginInputElement.value = ''
+        passwordInputElement.value = ''
+    })
 
     // кнопка Зарегистрироваться
-    const regButton = document.getElementById("auth-button-link");
-    regButton.addEventListener("click", () => {
-        renderRegistr();
-    });
-};
+    const regButton = document.getElementById('auth-button-link')
+    regButton.addEventListener('click', () => {
+        renderRegistr()
+    })
+}
 
 // отрисовка формы регистрации нового пользователя
 export const renderRegistr = () => {
-    const appRegElement = document.getElementById("app");
+    const appRegElement = document.getElementById('app')
     const registrHtml = `<div class="add-form" id="regForm">
      <input
         type="text" 
@@ -81,38 +81,38 @@ export const renderRegistr = () => {
       <div class="add-form-row">
         <button class="add-form-button" id="regButton">Зарегестрироваться</button>
       </div>
-    </div>`;
+    </div>`
 
-    appRegElement.innerHTML = registrHtml;
+    appRegElement.innerHTML = registrHtml
 
-    const nameInputElement = document.getElementById("regInputName");
-    const regLoginInputElement = document.getElementById("regInputLogin");
-    const regPasswordInputElement = document.getElementById("regInputPassword");
-    const regButtonElement = document.getElementById("regButton");
+    const nameInputElement = document.getElementById('regInputName')
+    const regLoginInputElement = document.getElementById('regInputLogin')
+    const regPasswordInputElement = document.getElementById('regInputPassword')
+    const regButtonElement = document.getElementById('regButton')
 
     // клик на кнопку Зарегистрироваться
-    regButtonElement.addEventListener("click", () => {
+    regButtonElement.addEventListener('click', () => {
         getRegistr({
             name: nameInputElement.value,
             login: regLoginInputElement.value,
             password: regPasswordInputElement.value,
         })
             .then((responseData) => {
-                setToken(responseData.user.token);
-                setName(responseData.user.userName);
-                renderCommentators();
+                setToken(responseData.user.token)
+                setName(responseData.user.userName)
+                renderCommentators()
             })
             .catch((error) => {
-                if (error.message === "Failed to fetch") {
-                    alert("Кажется что-то пошло не так, попробуйте позже");
+                if (error.message === 'Failed to fetch') {
+                    alert('Кажется что-то пошло не так, попробуйте позже')
                 }
-                if (error.message === "Сервер упал") {
-                    alert("Сервер сломался, попробуйте позже");
+                if (error.message === 'Сервер упал') {
+                    alert('Сервер сломался, попробуйте позже')
                 }
-                if (error.message === "Короткие вводимые данные") {
-                    alert("Неверный логин или пароль.");
+                if (error.message === 'Короткие вводимые данные') {
+                    alert('Неверный логин или пароль.')
                 }
-                console.warn(error);
-            });
-    });
-};
+                console.warn(error)
+            })
+    })
+}

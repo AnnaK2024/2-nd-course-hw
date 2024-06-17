@@ -1,12 +1,12 @@
-import { getComments } from "./api.js";
-import { currentDate, delay } from "./assistants.js";
-import { answerComment, initEventListeners } from "./eventListeners.js";
+import { getComments } from './api.js'
+import { currentDate, delay } from './assistants.js'
+import { answerComment, initEventListeners } from './eventListeners.js'
 import {
     setComments,
     renderCommentators,
     сommentators,
-} from "../renderCommentators.js";
-import { renderLogin } from "./src/renderForm.js";
+} from '../renderCommentators.js'
+import { renderLogin } from './src/renderForm.js'
 
 // форма добавления нового комментария
 function getCom() {
@@ -18,25 +18,25 @@ function getCom() {
                 comment: comment.text,
                 likes: comment.likes,
                 isLiked: comment.isLiked,
-            };
-        });
+            }
+        })
 
-        setComments(appComments);
+        setComments(appComments)
         renderCommentators({
             сommentators,
             initEventListeners,
             answerComment,
             delay,
-        });
-        preloader.classList.add("preloader-hidden");
-    });
+        })
+        preloader.classList.add('preloader-hidden')
+    })
 }
-getCom();
+getCom()
 
-renderLogin({ getComments });
+renderLogin({ getComments })
 
-initEventListeners({ сommentators }, { renderCommentators });
+initEventListeners({ сommentators }, { renderCommentators })
 
-answerComment(сommentators);
+answerComment(сommentators)
 
-console.log("It works!");
+console.log('It works!')

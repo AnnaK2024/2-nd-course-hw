@@ -3,20 +3,20 @@ import {
     answerComment,
     editEventListeners,
     initEventListeners,
-} from "./eventListeners.js";
-import { sanitizeHtml } from "./assistants.js";
-import { getComments, token, userName } from "./api.js";
-import { renderLogin } from "./src/renderForm.js";
+} from './eventListeners.js'
+import { sanitizeHtml } from './assistants.js'
+import { getComments, token, userName } from './api.js'
+import { renderLogin } from './src/renderForm.js'
 
-export let сommentators = [];
+export let сommentators = []
 
 export function setComments(newComments) {
-    сommentators = newComments;
+    сommentators = newComments
 }
 
 // отрисовка списка комментариев
 export const renderCommentators = () => {
-    const appElement = document.getElementById("app");
+    const appElement = document.getElementById('app')
     const commentatorsHtml = сommentators
         .map((сommentator, index) => {
             return `<li class="comment" data-index="${index}">
@@ -25,22 +25,22 @@ export const renderCommentators = () => {
        <div>${сommentator.date}</div>
       </div>
       <div class="comment-body">
-       <div class="${сommentator.isEdit ? "display-none" : "comment-text"}">${sanitizeHtml(сommentator.comment)}</div>
-       <textarea type="textarea" class="${сommentator.isEdit ? "add-form-text" : "display-none"}" >${сommentator.comment}</textarea>
+       <div class="${сommentator.isEdit ? 'display-none' : 'comment-text'}">${sanitizeHtml(сommentator.comment)}</div>
+       <textarea type="textarea" class="${сommentator.isEdit ? 'add-form-text' : 'display-none'}" >${сommentator.comment}</textarea>
       </div>
       <div class="comment-footer">
-        <button class="${сommentator.isEdit ? "edit-button" : "save-button"}" data-index="${index}">Редактировать</button>
-        <button class="${сommentator.isEdit ? "save-button" : "textarea"}" data-index="${index}">Сохранить</button>
+        <button class="${сommentator.isEdit ? 'edit-button' : 'save-button'}" data-index="${index}">Редактировать</button>
+        <button class="${сommentator.isEdit ? 'save-button' : 'textarea'}" data-index="${index}">Сохранить</button>
       <div class="likes">
         <span class="likes-counter">${сommentator.likes}</span>
-        <button data-like="${сommentator.likes}" data-index="${index}" class="like-button ${сommentators[index].isLiked ? "-active-like" : "like-button"}"></button>
+        <button data-like="${сommentator.likes}" data-index="${index}" class="like-button ${сommentators[index].isLiked ? '-active-like' : 'like-button'}"></button>
       </div>
     </div>
-    </li>`;
+    </li>`
         })
-        .join("");
+        .join('')
 
-    let appHtml = ""; // отображение формы в зависимости от наличия токена
+    let appHtml = '' // отображение формы в зависимости от наличия токена
 
     // если токен есть
     if (token) {
@@ -66,7 +66,7 @@ export const renderCommentators = () => {
     <div>
       <button class="button-delete" id="deleteComment">Удалить последний комментарий</button>
     </div>
-   </div>`;
+   </div>`
     } else {
         // ссылка на авторизацию
         appHtml = `
@@ -76,22 +76,22 @@ export const renderCommentators = () => {
    <div/>
    <div class="auth-info" id="load-comment">Чтобы добавить комментарий,
     <a class="auth-link" href="#" id="log">авторизуйтесь</a>
-   </div>`;
+   </div>`
     }
 
-    appElement.innerHTML = commentatorsHtml + appHtml; // если есть токен - список комментариев + appHtml (либо форма добавления комментария, либо поле авторизации)
+    appElement.innerHTML = commentatorsHtml + appHtml // если есть токен - список комментариев + appHtml (либо форма добавления комментария, либо поле авторизации)
 
     // токена нет
     if (!token) {
-        const logButtonElement = document.getElementById("log"); // переход по ссылке авторизации
-        logButtonElement.addEventListener("click", () => {
-            renderLogin(getComments);
-        });
+        const logButtonElement = document.getElementById('log') // переход по ссылке авторизации
+        logButtonElement.addEventListener('click', () => {
+            renderLogin(getComments)
+        })
     } else {
-        addNewComment(); // добавление нового комментария
+        addNewComment() // добавление нового комментария
     }
 
-    initEventListeners();
-    editEventListeners();
-    answerComment();
-};
+    initEventListeners()
+    editEventListeners()
+    answerComment()
+}
