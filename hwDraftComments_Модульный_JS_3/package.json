@@ -5,10 +5,9 @@
         "dev": "webpack --mode development --watch",
         "start": "http-server -p 3004",
         "format": "prettier --write .",
-        "lint:js": "eslint *.js",
-        "lint:css": "stylelint .css",
-        "lint": "npm run lint:js && npm run lint:css",
-        "prepare": "husky install"
+        "lint:js": "eslint '**/*.js'",
+        "lint:css": "stylelint './**.css'",
+        "lint": "npm run lint:js && npm run lint:css"
     },
     "dependencies": {
         "date-fns": "^3.6.0",
@@ -20,7 +19,6 @@
         "prettier": "^3.3.2"
     },
     "devDependencies": {
-        "husky": "^9.0.11",
         "stylelint": "^16.6.1",
         "stylelint-config-standard": "^36.0.0",
         "stylelint-prettier": "^5.0.0",
