@@ -1,5 +1,5 @@
 import { getLogin, getRegistr, setName, setToken } from "./api.js";
-import { renderCommentators } from "./renderCommentators.js";
+import { renderCommentators } from "../renderCommentators.js";
 
 // отрисовка входа по логин/пароль(если уже зарегистрирован), либо регистрация нового пользователя
 export const renderLogin = () => {

@@ -6,7 +6,7 @@ import {
     renderCommentators,
     сommentators,
 } from "../renderCommentators.js";
-import { renderLogin } from "./renderForm.js";
+import { renderLogin } from "./src/renderForm.js";
 
 // форма добавления нового комментария
 function getCom() {

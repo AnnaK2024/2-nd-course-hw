@@ -6,7 +6,7 @@ import {
 } from "./eventListeners.js";
 import { sanitizeHtml } from "./assistants.js";
 import { getComments, token, userName } from "./api.js";
-import { renderLogin } from "./renderForm.js";
+import { renderLogin } from "./src/renderForm.js";
 
 export let сommentators = [];
 
