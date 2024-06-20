@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { getComments } from "./api.js";
 import { delay } from "./assistants.js";
 import { answerComment, initEventListeners } from "./eventListeners.js";
@@ -8,14 +9,13 @@ import {
 } from "./renderCommentators.js";
 import { renderLogin } from "./renderForm.js";
 
-
 // форма добавления нового комментария
 function getCom() {
   getComments().then((responseData) => {
     let appComments = responseData.comments.map((comment) => {
       return {
         name: comment.author.name,
-        date: createDate(comment.date),
+        date: format(new Date(comment.date), "yyyy-MM-dd HH:mm:ss"),
         comment: comment.text,
         likes: comment.likes,
         isLiked: comment.isLiked,

@@ -15,12 +15,15 @@ export function setComments(newComments) {
   сommentators = newComments;
 }
 
+export const createDate = format(new Date(), "yyyy-MM-dd hh.mm.ss");
+
 // отрисовка списка комментариев
 export const renderCommentators = () => {
   const appElement = document.getElementById("app");
-  const createDate = format(new Date(comment.date), "MM/dd/yyyy hh:mm");
+  
   const commentatorsHtml = сommentators
     .map((сommentator, index) => {
+      const createDate = format(new Date(), "yyyy-MM-dd HH:mm:ss");
       return `<li class="comment" data-index="${index}">
       <div class="comment-header">
        <div>${sanitizeHtml(сommentator.name)}</div>

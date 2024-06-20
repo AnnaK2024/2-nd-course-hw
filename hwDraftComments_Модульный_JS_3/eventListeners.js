@@ -1,6 +1,7 @@
+import { format } from "date-fns";
 import {getComments, getPost } from "./api.js";
 import { delay } from "./assistants.js";
-import { renderCommentators, setComments, сommentators } from "./renderCommentators.js";
+import { renderCommentators, setComments, сommentators} from "./renderCommentators.js";
 
 
 // добавление нового комментария
@@ -38,7 +39,7 @@ export function addNewComment () {
       let appComments = responseData.comments.map((comment) => {
         return {
           name: comment.author.name,
-          date: createDate(comment.date),
+          date: format(new Date(comment.date), "yyyy-MM-dd HH:mm:ss"),
           comment: comment.text,
           likes: comment.likes,
           isLiked: comment.isLiked,
