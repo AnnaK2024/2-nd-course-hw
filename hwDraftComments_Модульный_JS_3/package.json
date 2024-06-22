@@ -1,14 +1,27 @@
 {
-  "description": "",
-  "scripts": {
-    "dev": "webpack --mode development --watch"
-  },
-  "dependencies": {
-    "date-fns": "^3.6.0",
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "webpack": "^5.92.1",
-    "webpack-cli": "^5.1.4"
-  }
+    "description": "",
+    "scripts": {
+        "dev": "webpack --mode development --watch",
+        "format": "prettier --write .",
+        "lint:js": "eslint '**/*.js'",
+        "lint:css": "stylelint './src/**/*.css'",
+        "prepare": "husky install",
+        "lint": "npm run lint:js && npm run lint:css"
+    },
+    "dependencies": {
+        "date-fns": "^3.6.0",
+        "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.1.3",
+        "husky": "^9.0.11",
+        "prettier": "^3.3.2",
+        "stylelint": "^16.6.1",
+        "stylelint-config-standard": "^36.0.1",
+        "stylelint-prettier": "^5.0.0",
+        "webpack": "^5.92.1",
+        "webpack-cli": "^5.1.4"
+    }
 }
