@@ -1,4 +1,4 @@
-import { getRegistration, setToken } from './api.js'
+import { registr, setToken } from './api.js'
 import { renderLogin } from './renderLogin.js'
 
 export const renderRegistration = ({ getComments }) => {
@@ -40,7 +40,7 @@ export const renderRegistration = ({ getComments }) => {
     const regPasswordInputElement = document.getElementById('regInputPassword')
 
     regButtonElement.addEventListener('click', () => {
-        getRegistration({
+        registr({
             name: nameInputElement.value,
             login: loginInputElement.value,
             password: passwordInputElement.value,
@@ -50,7 +50,6 @@ export const renderRegistration = ({ getComments }) => {
                 setToken(responseData.user.token)
                 setName(responseData.user.login)
                 getComments()
-                console.log(token)
             })
             .catch((error) => {
                 if (error.message === 'Failed to fetch') {

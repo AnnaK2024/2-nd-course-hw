@@ -81,7 +81,7 @@ export const renderCommentators = () => {
       <button class="add-form-button" id="add-button">Написать</button>
     </div>
     <div>
-      <button class="button-delete" id="deleteComment">Удалить последний комментарий</button>
+      <button data-id="${сommentator.id}" class="button-delete" id="deleteComment">Удалить последний комментарий</button>
     </div>
    </div>`
     } else {
@@ -108,6 +108,28 @@ export const renderCommentators = () => {
         addNewComment() // добавление нового комментария
     }
 
+    const formElement = document.getElementById('form')
+    if (formElement) {
+        formElement.addEventListener('keyup', keyEvent)
+        function keyEvent(e) {
+            if (e.code === 'Enter') {
+                buttonElement.dispatchEvent(new Event('click'))
+            }
+        }
+    }
+
+    const deleteButtons = document.querySelectorAll('.button-delete')
+    for (const deleteButton of deleteButtons) {
+        deleteButton.addEventListener('click', (event) => {
+            event.stopPropagation()
+
+            const id = deleteButton.dataset.id
+
+            deleteComment({ id }).then(() => {
+                getComments()
+            })
+        })
+    }
     initEventListeners()
     editEventListeners()
     answerComment()

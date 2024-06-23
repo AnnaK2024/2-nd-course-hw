@@ -1,4 +1,4 @@
-import { getLogin, setName, setToken } from './api.js'
+import { userLogin, setName, setToken } from './api.js'
 
 export const renderLogin = ({ getComments }) => {
     const appElement = document.getElementById('app')
@@ -30,7 +30,7 @@ export const renderLogin = ({ getComments }) => {
     const passwordInputElement = document.getElementById('password-input')
 
     buttonLoginElement.addEventListener('click', () => {
-        getLogin({
+        userLogin({
             login: loginInputElement.value,
             password: passwordInputElement.value,
         }).then((responsData) => {

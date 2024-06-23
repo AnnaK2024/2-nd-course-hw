@@ -1,4 +1,4 @@
-import { getLogin, getRegistr, setName, setToken } from './api.js'
+import { userLogin, registr, setName, setToken } from './api.js'
 import { renderCommentators } from './renderCommentators.js'
 
 // отрисовка входа по логин/пароль(если уже зарегистрирован), либо регистрация нового пользователя
@@ -33,7 +33,7 @@ export const renderLogin = () => {
 
     // клик на кнопку Войти
     buttonLoginElement.addEventListener('click', () => {
-        getLogin({
+        userLogin({
             login: loginInputElement.value,
             password: passwordInputElement.value,
         }).then((responsData) => {
@@ -92,7 +92,7 @@ export const renderRegistr = () => {
 
     // клик на кнопку Зарегистрироваться
     regButtonElement.addEventListener('click', () => {
-        getRegistr({
+        registr({
             name: nameInputElement.value,
             login: regLoginInputElement.value,
             password: regPasswordInputElement.value,

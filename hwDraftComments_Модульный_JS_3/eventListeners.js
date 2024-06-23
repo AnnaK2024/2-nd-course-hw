@@ -1,5 +1,5 @@
 import { format } from 'date-fns'
-import { getComments, getPost } from './api.js'
+import { getComments, post } from './api.js'
 import { delay } from './assistants.js'
 import {
     renderCommentators,
@@ -31,7 +31,7 @@ export function addNewComment() {
         addForm.classList.add('hidden')
         loader.textContent = 'Комментарий добавляется .....'
 
-        getPost({
+        post({
             name: nameElement.value,
             text: textElement.value,
         })
@@ -149,22 +149,41 @@ export function answerComment() {
     }
 }
 
-// добавление нового комментария по нажатию на Enter
-const formElement = document.getElementById('form')
-if (formElement) {
-    formElement.addEventListener('keyup', keyEvent)
-    function keyEvent(e) {
-        if (e.code === 'Enter') {
-            buttonElement.dispatchEvent(new Event('click'))
-        }
-    }
-}
+// // добавление нового комментария по нажатию на Enter
+// export function commentEnter() {
+//     const formElement = document.getElementById('form')
+//     if (formElement) {
+//       formElement.addEventListener('keyup', keyEvent)
+//       function keyEvent(e) {
+//         if (e.code === 'Enter') {
+//             buttonElement.dispatchEvent(new Event('click'))
+//         }
+//       }
+//     }
+// }
+
 
 // удаление последнего комментария
-const removeButton = document.getElementById('deleteComment')
-if (removeButton) {
-    removeButton.addEventListener('click', () => {
-        сommentators.pop()
-        renderCommentators()
-    })
-}
+// export function deletingLastComment() {
+//     const removeButton = document.getElementById('deleteComment')
+//     if (removeButton) {
+//       removeButton.addEventListener('click', () => {
+//         сommentators.pop()
+//         renderCommentators()
+//       })
+//     }
+// }
+
+// const deleteButtons = document.querySelectorAll('.button-delete');
+// for (const deleteButton of deleteButtons) {
+//     deleteButton.addEventListener("click", (event) => {
+//       event.stopPropagation();
+
+//       const id = deleteButton.dataset.id;
+
+//       deleteComment({id}).then(()) => {
+//         renderCommentators()
+//       }
+//     })
+// }   
+

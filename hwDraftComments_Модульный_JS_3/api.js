@@ -1,6 +1,7 @@
 const host = 'https://wedev-api.sky.pro/api/v2/:anna-kalina/comments'
 const userLog = 'https://wedev-api.sky.pro/api/user/login'
 const userReg = 'https://wedev-api.sky.pro/api/user'
+const commDel = 'https://wedev-api.sky.pro/api/v2/:anna-kalina/comments/:id'
 
 export let token = ''
 export const setToken = (newToken) => {
@@ -35,7 +36,7 @@ export function getComments() {
         })
 }
 
-export function getPost({ name, text }) {
+export function post({ name, text }) {
     return fetch(host, {
         method: 'POST',
         body: JSON.stringify({
@@ -56,36 +57,42 @@ export function getPost({ name, text }) {
     })
 }
 
-export function getLogin({ login, password }) {
+export function userLogin({ login, password }) {
     return fetch(userLog, {
         method: 'POST',
         body: JSON.stringify({
             login,
             password,
+        }).then((response) => {
+            return response.json()
         }),
-    }).then((response) => {
-        return response.json()
     })
 }
 
-export function getRegistr({ name, login, password }) {
+export function registr({ name, login, password }) {
     return fetch(userReg, {
         method: 'POST',
         body: JSON.stringify({
             name: name,
             login: login,
             password: password,
+        }).then((response) => {
+            if (response.status === 400) {
+                throw new Error('Пользователь с таким логином уже существует')
+            } else {
+                return response.json()
+            }
         }),
-    }).then((response) => {
-        return response.json()
     })
 }
 
-export function deleteComment(id) {
-    return fetch(userReg + '/' + id, {
+export function deleteComment({ id }) {
+    return fetch(commDel + id, {
         method: 'DELETE',
         headers: {
-            Authorization: token,
-        },
-    }).then((response) => response.pop())
-}    
+            Authorization: `Bearer ${token}`,
+        }.then((response) => {
+            return response.json()
+        }),
+    })
+}
