@@ -4,7 +4,7 @@ body {
 
 .container {
     font-family: Helvetica;
-    color: #ffffff;
+    color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,6 +12,12 @@ body {
     padding-bottom: 200px;
     background: #202020;
     min-height: 100vh;
+}
+
+.listComments {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
 }
 
 .comments,
@@ -28,10 +34,10 @@ body {
     box-sizing: border-box;
     background: radial-gradient(
         75.42% 75.42% at 50% 42.37%,
-        rgba(53, 53, 53, 0) 22.92%,
+        rgb(53 53 53 / 0%) 22.92%,
         #7334ea 100%
     );
-    filter: drop-shadow(0px 20px 67px rgba(0, 0, 0, 0.08));
+    filter: drop-shadow(0 20px 67px rgb(0 0 0 / 8%));
     border-radius: 20px;
 }
 
@@ -141,7 +147,7 @@ body {
     margin-top: 24px;
     font-size: 24px;
     padding: 10px 20px;
-    background-color: rgb(230, 220, 247);
+    background-color: rgb(230 220 247);
     border: none;
     border-radius: 18px;
     cursor: pointer;
@@ -152,15 +158,14 @@ body {
 }
 
 .button-delete {
-    font-size: 37px;
     border: none;
     border-radius: 27px;
     cursor: pointer;
     font-size: 17px;
     padding: 7px 12px;
     font-family: Helvetica;
-    color: #ffffff;
-    background-color: rgb(114, 95, 147);
+    color: #fff;
+    background-color: rgb(114 95 147);
 }
 
 .button-delete:hover {
@@ -168,15 +173,14 @@ body {
 }
 
 .edit-button {
-    font-size: 37px;
     border: none;
     border-radius: 27px;
     cursor: pointer;
     font-size: 17px;
     padding: 7px 12px;
     font-family: Helvetica;
-    color: #ffffff;
-    background-color: rgb(114, 95, 147);
+    color: #fff;
+    background-color: rgb(114 95 147);
 }
 
 .edit-button:hover {
@@ -188,15 +192,14 @@ body {
 }
 
 .save-button {
-    font-size: 37px;
     border: none;
     border-radius: 27px;
     cursor: pointer;
     font-size: 17px;
     padding: 7px 12px;
     font-family: Helvetica;
-    color: #ffffff;
-    background-color: rgb(114, 95, 147);
+    color: #fff;
+    background-color: rgb(114 95 147);
 }
 
 .save-button:hover {
@@ -204,15 +207,14 @@ body {
 }
 
 .textarea {
-    font-size: 37px;
     border: none;
     border-radius: 27px;
     cursor: pointer;
     font-size: 17px;
     padding: 7px 12px;
     font-family: Helvetica;
-    color: #ffffff;
-    background-color: rgb(114, 95, 147);
+    color: #fff;
+    background-color: rgb(114 95 147);
     display: none;
 }
 
@@ -222,23 +224,26 @@ body {
 
 .quote {
     box-sizing: border-box;
-    background-color: rgb(230, 220, 247);
+    background-color: rgb(230 220 247);
     font-size: 37px;
     color: #202020;
     border-radius: 10px;
 }
 
 @keyframes rotating {
-    from {
+    0% {
         transform: rotate(0deg);
     }
+
     25% {
         transform: rotate(30deg);
     }
+
     75% {
         transform: rotate(-30deg);
     }
-    to {
+
+    100% {
         transform: rotate(0deg);
     }
 }
@@ -277,14 +282,15 @@ p {
     background-repeat: no-repeat;
     background-size: 80%;
     animation: animate 3s linear infinite;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    background-clip: text;
+    -webkit-text-fill-color: rgb(255 255 255 / 0%);
 }
 
 @keyframes animate {
     0% {
         background-position: -500%;
     }
+
     100% {
         background-position: 500%;
     }
@@ -306,6 +312,7 @@ p {
     clip-path: inset(0 3ch 0 0);
     animation: l 1s steps(4) infinite;
 }
+
 @keyframes l {
     to {
         clip-path: inset(0 -1ch 0 0);

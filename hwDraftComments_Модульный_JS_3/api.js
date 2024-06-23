@@ -81,10 +81,11 @@ export function getRegistr({ name, login, password }) {
     })
 }
 
-export function deleteComment({ id }) {
-    return fetch(userReg + id, {
+export function deleteComment(id) {
+    return fetch(userReg + '/' + id, {
         method: 'DELETE',
-    }).then((response) => {
-        return response.json()
-    })
-}
+        headers: {
+            Authorization: token,
+        },
+    }).then((response) => response.pop())
+}    

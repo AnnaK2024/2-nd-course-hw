@@ -4,9 +4,13 @@
         "dev": "webpack --mode development --watch",
         "format": "prettier --write .",
         "lint:js": "eslint ./**/*.js",
-        "lint:css": "stylelint ./**/*.css",
-        "prepare": "husky install",
-        "lint": "npm run lint:js && npm run lint:css"
+        "lint:css": "stylelint './src/**.css'",
+        "lint": "npm run lint:js && npm run lint:css",
+        "prepare": "husky install"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://wedev-api.sky.pro/api/v2/:anna-kalina/comments"
     },
     "dependencies": {
         "date-fns": "^3.6.0",
